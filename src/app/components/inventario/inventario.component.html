@@ -1,14 +1,93 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-  <!-- Dropdown Trigger -->
-  <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-
-  <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">one</a></li>
-    <li><a href="#!">two</a></li>
-    <li class="divider" tabindex="-1"></li>
-    <li><a href="#!">three</a></li>
-    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-    <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-  </ul>
+<div class="contenedor">
+  <div class="row">
+    <form class="col s12">
+      <div class="titulo">
+        <span>Modificar inventario</span>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+            <i class="material-icons prefix">info</i>
+            <input id="code" type="text" class="validate" [(ngModel)]="idProducto.id" name="idProducto">
+            <label for="code">Código de barras</label>
+        </div>
         
+        <div class="input-field col s6" >
+            <button class="btn waves-effect waves-light left" type="submit" name="action" (click)="listone()" >Buscar
+                <i class="material-icons right">search</i>
+            </button>
+        </div>
+
+    </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">info</i>
+          <input  id="name" type="text" class="validate">
+          <label for="name"> Nombre del producto</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">info</i>
+          <input  id="name" type="text" class="validate">
+          <label for="name"> Precio</label>
+        </div>
+
+        <div class="input-field col s6">
+
+          <input  id="name" type="text" class="validate">
+          <label for="name"> Cantidad</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <!--<i class="material-icons prefix">percent</i>-->
+          <input  id="name" type="text" class="validate">
+          <label for="name"> Descuento</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">info</i>
+          <input  id="name" type="text" class="validate">
+          <label for="name"> Inicio descuento</label>
+        </div>
+
+        <div class="input-field col s6">
+          <i class="material-icons prefix">info</i>
+          <input  id="name" type="text" class="validate">
+          <label for="name"> Fin descuento</label>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <div class="flex">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">info</i>
+            <input  id="name" type="text" class="validate">
+            <label for="name"> Categoria</label>
+          </div>
+        
+          <div class="input-field col s6">
+            <i class="material-icons prefix">info</i>
+            <input  id="name" type="text" class="validate">
+            <label for="name"> Material</label>
+          
+          </div>        
+          <div class="input-field col s6">
+            <i class="material-icons prefix">info</i>
+            <input  id="name" type="text" class="validate">
+            <label for="name"> Marca</label>
+          </div>
+        </div>
+      </div>
+      </div>
+    </form>
+  </div>
+        
+</div>

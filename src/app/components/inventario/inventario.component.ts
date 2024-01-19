@@ -1,4 +1,7 @@
 import { Component,OnInit } from '@angular/core';
+import { InventarioService } from '../../services/inventario/inventario.service';
+import { getId } from '../../models/getId';
+import { Router } from '@angular/router';
 declare var $:any;
 @Component({
   selector: 'app-inventario',
@@ -6,12 +9,18 @@ declare var $:any;
   styleUrls: ['./inventario.component.css']
 })
 export class InventarioComponent  implements OnInit{
-  constructor() { }
-  ngOnInit(): void{
-    $ (document).ready(function(){
-      $ ('.modal').modal();
-  });}
-
+  idProducto = new getId();
+  constructor(private inventarioService:InventarioService ,private router:Router ) { }
+  ngOnInit(): void {
+    $(document).ready(function(){
+      $('.dropdown-trigger').dropdown();
+        
+    });
+  }
+  listone()
+  {
+    this.inventarioService.listone(this.idProducto.id).subscribe(res => {console.log(res);},err => console.log(err));
+  }
 
  
 }
