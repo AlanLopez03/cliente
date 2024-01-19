@@ -1,0 +1,21 @@
+<div class="cajaLogin">
+    <form class="loginForm">
+        <span>Iniciar sesión</span>
+        <input class="browser-default" type="email"
+        [(ngModel)]="login.correo" placeholder="correo" name="email" >
+
+
+        <!--<input type="text" placeholder="Username" name="username">
+        <input type="password" placeholder="Password" name="password">-->
+        <input class="browser-default" type="email"
+        [(ngModel)]="login.password" placeholder="contraseña" name="password" >
+
+
+        <a class="waves-effect waves-light btn"  (click)="logueo()"><i class="material-icons left">send</i>Iniciar sesión</a>
+        <p>No tienes una cuenta?</p>
+        <a href="nuevoUsuario">Crear cuenta </a>
+    </form>
+</div>
+
+
+
