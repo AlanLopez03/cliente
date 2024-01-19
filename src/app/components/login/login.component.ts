@@ -13,6 +13,10 @@ login = new loginModel();
 
 constructor(private usuarioService: UsuarioService,private router:Router) { }
 logueo(){
+  if (this.login.correo == '' || this.login.password == '') {
+    alert('Debe ingresar todos los datos');
+    return;
+  }
   this.usuarioService.login(this.login.correo, this.login.password).subscribe(
     //res => {
     //  console.log(res);

@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
-
+import { Component,OnInit } from '@angular/core';
+declare var $:any;
 @Component({
   selector: 'app-inventario',
   templateUrl: './inventario.component.html',
-  styleUrl: './inventario.component.css'
+  styleUrls: ['./inventario.component.css']
 })
-export class InventarioComponent {
+export class InventarioComponent  implements OnInit{
+  constructor() { }
+  ngOnInit(): void{
+    $ (document).ready(function(){
+      $ ('.modal').modal();
+  });}
 
+
+ 
 }

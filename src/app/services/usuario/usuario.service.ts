@@ -15,4 +15,7 @@ export class UsuarioService {
   listone(id : any) {
     return this.http.get(`${environment.API_URI}/usuarios/${id}`);
     }
+  crearUsuario(usuario: any) {
+    return this.http.post(`${environment.API_URI}/usuarios/crearusuario/`, usuario);
+  }
 }
