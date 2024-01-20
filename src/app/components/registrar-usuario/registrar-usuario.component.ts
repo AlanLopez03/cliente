@@ -12,6 +12,7 @@ export class RegistrarUsuarioComponent {
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   registrarUsuario() {
+  
     this.usuarioService.crearUsuario(this.usuario).subscribe(
       res => {
         console.log(res);
