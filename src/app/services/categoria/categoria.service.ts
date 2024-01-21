@@ -4,13 +4,13 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class InventarioService {
+export class CategoriaService {
 
   constructor(private http: HttpClient) { }
-  listone(id : any) {
-    return this.http.get(`${environment.API_URI}/productos/${id}`);
-    }
   list() {
-    return this.http.get(`${environment.API_URI}/productos`);
-    }
+    return this.http.get(`${environment.API_URI}/categorias`);
+  }
+  listone(id: any) {
+    return this.http.get(`${environment.API_URI}/categorias/${id}`);
+  }
 }

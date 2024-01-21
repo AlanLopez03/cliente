@@ -26,7 +26,12 @@ logueo(){
       if (res) 
       {
         //localStorage.setItem('correo',this.login.correo);
-        this.router.navigateByUrl('/home');
+        console.log(res);
+        if (res.idRol == 1){
+          console.log('Administrador');
+          this.router.navigateByUrl('/control');}
+        else
+          this.router.navigateByUrl('/home');
       } 
       else {
         alert('Usuario o contraseña incorrectos');

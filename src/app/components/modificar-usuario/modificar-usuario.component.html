@@ -1,0 +1,58 @@
+<div class="contenedor">
+    <div>Modificar usuarios</div>
+<table class="default" *ngIf="usuarios != undefined">
+
+    <tr *ngFor="let usuario of usuarios">
+  
+      <td>{{usuario.nombre}}</td>
+      <td><a class="modal-trigger" data-target="modalModificarusuario"  (click)="modificarUsuario(usuario.idUsuario)"><i class="material-icons">edit</i></a></td>
+
+
+    </tr>
+  
+  </table>
+  
+  <div  id="modalModificarusuario" class="modal" >
+    <div class="modal-content">
+      <h4>Modificar usuario</h4>
+      <div class="row">
+        <div class="input-field col s12">
+          <label>Nombre </label>
+          <input   [(ngModel)]="usuario.nombre"  type="text" class="validate">
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+              <label>Correo </label>
+              <input   [(ngModel)]="usuario.correo"  type="text" class="validate">
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+              <label>Nombre de usuario </label>
+              <input   [(ngModel)]="usuario.username"  type="text" class="validate">
+        </div>        
+        <div class="row">
+            <div class="input-field col s12">
+              <label>Contraseña </label>
+              <input   [(ngModel)]="usuario.password"  type="password" class="validate">
+        </div>
+            <a class='dropdown-trigger btn' href='#' data-target='dropdown1' *ngIf="roles!=undefined">{{rol.nombreRol}}</a>
+            <ul id='dropdown1' class='dropdown-content' >
+                <li *ngFor="let rol of roles">
+                    <a (click)="modificarRol(rol.idRol,usuario)">{{rol.nombreRol}}</a>
+                </li>
+            </ul>
+
+      </div>
+      <div class="row">
+    </div>
+  </div>
+    <div class="modal-footer">
+        <a class="modal-close btn-flat" (click)="cancelar()">Cancelar</a>
+        <a class="btn red darken-2" (click)="eliminar(usuario.idUsuario)" >Eliminar</a>
+        <a class="btn" (click)="guardar()" >Modificar</a>
+
+        <!--Agregar el color justo despues del boton-->
+    </div>
+  </div>
+</div>
+

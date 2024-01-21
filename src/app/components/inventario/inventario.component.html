@@ -1,6 +1,20 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
 
 <div class="contenedor">
+    <table class="default" *ngIf="productos != undefined">
+      <tr *ngFor="let producto of productos">
+        <td>
+          {{producto.nombre}}
+          <td><a class="modal-trigger" data-target="modal1"  (click)="modificarProducto(producto.idProducto)"><i class="material-icons">edit</i></a>
+        </td>
+      </tr>
+    </table>
+</div>
+
+
+<div id="modal1" class="modal">
+  <div class="modal-content">
   <div class="row">
     <form class="col s12">
       <div class="titulo">
@@ -9,33 +23,28 @@
       <div class="row">
         <div class="input-field col s6">
             <i class="material-icons prefix">info</i>
-            <input id="code" type="text" class="validate" [(ngModel)]="idProducto.id" name="idProducto">
+            <input id="code" type="text" class="validate" [(ngModel)]="producto.idProducto" name="idProducto">
             <label for="code">Código de barras</label>
         </div>
         
-        <div class="input-field col s6" >
-            <button class="btn waves-effect waves-light left" type="submit" name="action" (click)="listone()" >Buscar
-                <i class="material-icons right">search</i>
-            </button>
-        </div>
     </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
-          <input  id="name" type="text" class="validate">
+          <input  id="name" type="text" class="validate" [(ngModel)]="producto.nombre" name="Nombre">
           <label for="name"> Nombre del producto</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
-          <input  id="name" type="text" class="validate">
+          <input  id="name" type="text" class="validate" [(ngModel)]="producto.precio" name="Precio">
           <label for="name"> Precio</label>
         </div>
 
         <div class="input-field col s6">
 
-          <input  id="name" type="text" class="validate">
+          <input  id="name" type="text" class="validate" [(ngModel)]="producto.stock" name="Cantidad">
           <label for="name"> Cantidad</label>
         </div>
       </div>
@@ -43,49 +52,44 @@
       <div class="row">
         <div class="input-field col s6">
           <!--<i class="material-icons prefix">percent</i>-->
-          <input  id="name" type="text" class="validate">
+          <input  id="name" type="text" class="validate" [(ngModel)]="producto.descuento" name="descuento">
           <label for="name"> Descuento</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
-          <input  id="name" type="text" class="validate">
+          <input  id="name" type="text" class="validate" [(ngModel)]="producto.inicio_descuento" name="inicio_descuento">
           <label for="name"> Inicio descuento</label>
         </div>
 
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
-          <input  id="name" type="text" class="validate">
+          <input  id="name" type="text" class="validate" [(ngModel)]="producto.fin_descuento" name="fin_descuento">
           <label for="name"> Fin descuento</label>
         </div>
-
       </div>
+        <div class="row">
+            <div>
+              <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>{{categoria.nombre}}</a>
+              <ul id='dropdown1' class='dropdown-content'>
+                <li *ngFor="let categoria of categorias">
+                  <a >{{categoria.nombre}}</a>
 
-      <div class="row">
-        <div class="col s12">
-          <div class="flex">
-          <div class="input-field col s6">
-            <i class="material-icons prefix">info</i>
-            <input  id="name" type="text" class="validate">
-            <label for="name"> Categoria</label>
-          </div>
-        
-          <div class="input-field col s6">
-            <i class="material-icons prefix">info</i>
-            <input  id="name" type="text" class="validate">
-            <label for="name"> Material</label>
-          
-          </div>        
-          <div class="input-field col s6">
-            <i class="material-icons prefix">info</i>
-            <input  id="name" type="text" class="validate">
-            <label for="name"> Marca</label>
-          </div>
+                </li>
+              </ul>
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
         </div>
-      </div>
-      </div>
     </form>
   </div>
-        
+  </div>   
+  <div class="modal-footer">
+    <a  class="modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>     
 </div>

@@ -8,6 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { RegistrarUsuarioComponent } from './components/registrar-usuario/registrar-usuario.component';
 import { InventarioComponent } from './components/inventario/inventario.component';
+import { ControlComponent } from './components/control/control.component';
+import { ModificarUsuarioComponent } from './components/modificar-usuario/modificar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { InventarioComponent } from './components/inventario/inventario.componen
     LoginComponent,
     InicioComponent,
     RegistrarUsuarioComponent,
-    InventarioComponent
+    InventarioComponent,
+    ControlComponent,
+    ModificarUsuarioComponent
   ],
   imports: [
     FormsModule,
