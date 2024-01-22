@@ -1,4 +1,7 @@
 import { Component,OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { InventarioService } from '../../services/inventario/inventario.service';
+import { Producto } from '../../models/producto';
 declare var $:any;
 @Component({
   selector: 'app-inicio',
@@ -6,7 +9,9 @@ declare var $:any;
   styleUrl: './inicio.component.css'
 })
 export class InicioComponent implements OnInit {
-constructor(){}
+constructor(private inventarioService:InventarioService,private router:Router){}
+productos:Producto[]= [];
+producto = new Producto();
 ngOnInit(): void {
   $(document).ready(function(){
     $('.sidenav').sidenav();
@@ -14,9 +19,15 @@ ngOnInit(): void {
     $('.modal').modal();   
       
   });
+  this.getProductos();
 }
-prueba(){
-  console.log("prueba");
-}
-
+getProductos()
+  {
+    this.inventarioService.list().subscribe(
+      (res:any) => {
+        this.productos = res;
+        console.log(res);
+      },err => console.log(err)
+      );
+  }
 }

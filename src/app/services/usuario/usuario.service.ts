@@ -37,4 +37,7 @@ export class UsuarioService {
   delete(idUsuario: any){
     return this.http.delete(`${environment.API_URI}/usuarios/eliminar/${idUsuario}`);
   }
+  recomendaciones(idUsuario: any){
+    return this.http.get(`${environment.API_URI}/usuarios/recomendaciones/${idUsuario}`);
+  }
 }
