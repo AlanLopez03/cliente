@@ -6,7 +6,7 @@
   
       <td>{{usuario.nombre}}</td>
       <td><a class="modal-trigger" data-target="modalModificarusuario"  (click)="modificarUsuario(usuario.idUsuario)"><i class="material-icons">edit</i></a></td>
-
+      <td><a class="modal-trigger" data-target="modal2" ><i class="material-icons">delete</i></a></td>
 
     </tr>
   
@@ -17,28 +17,28 @@
       <h4>Modificar usuario</h4>
       <div class="row">
         <div class="input-field col s12">
-          <label>Nombre </label>
+          <label class="active">Nombre </label>
           <input   [(ngModel)]="usuario.nombre"  type="text" class="validate">
         </div>
         <div class="row">
             <div class="input-field col s12">
-              <label>Correo </label>
+              <label class="active">Correo </label>
               <input   [(ngModel)]="usuario.correo"  type="text" class="validate">
         </div>
         <div class="row">
             <div class="input-field col s12">
-              <label>Nombre de usuario </label>
+              <label class="active">Nombre de usuario </label>
               <input   [(ngModel)]="usuario.username"  type="text" class="validate">
         </div>        
         <div class="row">
             <div class="input-field col s12">
-              <label>Contraseña </label>
+              <label class="active">Contraseña </label>
               <input   [(ngModel)]="usuario.password"  type="password" class="validate">
         </div>
             <a class='dropdown-trigger btn' href='#' data-target='dropdown1' *ngIf="roles!=undefined">{{rol.nombreRol}}</a>
             <ul id='dropdown1' class='dropdown-content' >
                 <li *ngFor="let rol of roles">
-                    <a (click)="modificarRol(rol.idRol,usuario)">{{rol.nombreRol}}</a>
+                    <a (click)="modificarRol(rol,usuario)">{{rol.nombreRol}}</a>
                 </li>
             </ul>
 
@@ -56,3 +56,13 @@
   </div>
 </div>
 
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <h4>Eliminar producto</h4>
+    <p>¿Deseas continuar?</p>
+  </div>
+  <div class="modal-footer">
+    <a  class="modal-close waves-effect waves-green btn-flat" (click)="return()">No</a>
+    <a  class="waves-effect waves-green btn-flat" (click)="eliminar(usuario.idUsuario)">Sí</a>
+  </div>
+</div>

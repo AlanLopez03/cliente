@@ -1,13 +1,14 @@
-
-
-
 <div class="contenedor">
+  <span class="titulo">
+    Modificar productos
+  </span>
     <table class="default" *ngIf="productos != undefined">
       <tr *ngFor="let producto of productos">
-        <td>
-          {{producto.nombre}}
-          <td><a class="modal-trigger" data-target="modal1"  (click)="modificarProducto(producto.idProducto)"><i class="material-icons">edit</i></a>
-        </td>
+        <td>{{producto.nombre}}<td>
+        <td><a class="modal-trigger" data-target="modal1"  (click)="modificarProducto(producto.idProducto)"><i class="material-icons">edit</i></a>
+        <a class="modal-trigger" data-target="modal2"><i class="material-icons">delete</i></a>
+      </td>
+        
       </tr>
     </table>
 </div>
@@ -24,63 +25,75 @@
         <div class="input-field col s6">
             <i class="material-icons prefix">info</i>
             <input id="code" type="text" class="validate" [(ngModel)]="producto.idProducto" name="idProducto">
-            <label for="code">Código de barras</label>
+            <label for="code" class="active">Código de barras</label>
         </div>
         
     </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
-          <input  id="name" type="text" class="validate" [(ngModel)]="producto.nombre" name="Nombre">
-          <label for="name"> Nombre del producto</label>
+          <input  id="name" type="text" class="validate" placeholder="producto.nombre" [(ngModel)]="producto.nombre" name="Nombre">
+          <label for="name" class="active"> Nombre del producto</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
-          <input  id="name" type="text" class="validate" [(ngModel)]="producto.precio" name="Precio">
-          <label for="name"> Precio</label>
+          <input  id="name" type="text" class="validate"  [(ngModel)]="producto.precio" name="Precio">
+          <label for="name" class="active"> Precio</label>
         </div>
 
         <div class="input-field col s6">
 
           <input  id="name" type="text" class="validate" [(ngModel)]="producto.stock" name="Cantidad">
-          <label for="name"> Cantidad</label>
+          <label for="name" class="active"> Cantidad</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s6">
-          <!--<i class="material-icons prefix">percent</i>-->
+          <i class="material-icons prefix">percent</i>
           <input  id="name" type="text" class="validate" [(ngModel)]="producto.descuento" name="descuento">
-          <label for="name"> Descuento</label>
+          <label for="name" class="active"> Descuento</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
-          <input  id="name" type="text" class="validate" [(ngModel)]="producto.inicio_descuento" name="inicio_descuento">
-          <label for="name"> Inicio descuento</label>
+
+          <label for="name" class="active"> Inicio descuento</label>
+          <input type="text" class="datepicker" id="inicio_descuento" [(ngModel)]="producto.inicio_descuento" name="inicio_descuento" >
         </div>
 
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
-          <input  id="name" type="text" class="validate" [(ngModel)]="producto.fin_descuento" name="fin_descuento">
-          <label for="name"> Fin descuento</label>
+          <label for="name" class="active"> Fin descuento</label>
+          <input type="text" class="datepicker" id="fin_descuento"  [(ngModel)]="producto.fin_descuento" name="fin_descuento" >
         </div>
       </div>
         <div class="row">
             <div>
+              
               <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>{{categoria.nombre}}</a>
               <ul id='dropdown1' class='dropdown-content'>
                 <li *ngFor="let categoria of categorias">
-                  <a >{{categoria.nombre}}</a>
-
+                  <a (click)="modificarCategoria(categoria,producto)">{{categoria.nombre}}</a>
                 </li>
               </ul>
             </div>
+            <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>{{material.nombre}}</a>
+              <ul id='dropdown2' class='dropdown-content'>
+                <li *ngFor="let material of materiales">
+                  <a (click)="modificarMaterial(material,producto)" >{{material.nombre}}</a>
+                </li>
+              </ul>
             <div>
-
+              <a class='dropdown-trigger btn' href='#' data-target='dropdown3'>{{marca.nombre}}</a>
+              <ul id='dropdown3' class='dropdown-content'>
+                <li *ngFor="let marca of marcas">
+                  <a (click)="modificarMarca(marca,producto)">{{marca.nombre}}</a>
+                </li>
+              </ul>
             </div>
             <div>
 
@@ -90,6 +103,21 @@
   </div>
   </div>   
   <div class="modal-footer">
-    <a  class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    <a  class="modal-close waves-effect waves-green btn-flat" (click)="guardarProducto()">Guardar Datos</a>
+    <a  class="modal-close waves-effect waves-green btn-flat" >Cancelar </a>
   </div>     
 </div>
+
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <h4>Eliminar producto</h4>
+    <p>¿Deseas continuar?</p>
+  </div>
+  <div class="modal-footer">
+    <a  class="modal-close waves-effect waves-green btn-flat" (click)="return()">No</a>
+    <a  class="waves-effect waves-green btn-flat" (click)="eliminarProducto(producto.idProducto)">Sí</a>
+  </div>
+</div>
+
+      

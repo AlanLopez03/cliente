@@ -55,8 +55,13 @@ export class ModificarUsuarioComponent implements OnInit {
   cancelar() {
     $('#modalModificarusuario').modal('close');
   }
-  modificarRol(idRol: any,usuario: any){
-    usuario.idRol = idRol;
+  modificarRol(rol: any,usuario: any){
+    usuario.idRol = rol.idRol;
+    for (const rol1 of this.roles) {
+      if(rol1.idRol == rol.idRol){
+        this.rol = rol1;
+      }
+    }
   }
   eliminar(idUsuario: any){
     this.usuarioService.delete(idUsuario).subscribe((resUsuario: any) => 
@@ -64,6 +69,9 @@ export class ModificarUsuarioComponent implements OnInit {
       console.log("Usuario eliminado correctamente")
       
     }, err => console.log(err));
+  }
+  return(){
+    $('modal2').modal('close');
   }
 }
 
