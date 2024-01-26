@@ -13,6 +13,7 @@ const routes: Routes = [
 {path:'inventario',redirectTo: 'inventario',pathMatch: 'full'},{path:'inventario',component:InventarioComponent,},
 {path:'control',redirectTo: 'control',pathMatch: 'full'},{path:'control',component:ControlComponent,},
 {path:'modificarUsuario',redirectTo: 'modificarUsuario',pathMatch: 'full'},{path:'modificarUsuario',component:ModificarUsuarioComponent,},
+{path:"modificarInventario",redirectTo:"modificarInventario",pathMatch:"full"},{path:"modificarInventario",component:InventarioComponent,}
 ];
 
 @NgModule({

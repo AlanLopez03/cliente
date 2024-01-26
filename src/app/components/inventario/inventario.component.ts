@@ -8,7 +8,7 @@ import { Material } from '../../models/material';
 import { Marca } from '../../models/marca';
 import { MaterialService } from '../../services/material/material.service';
 import { MarcaService } from '../../services/marca/marca.service';
-
+import Swal from 'sweetalert2';
 declare var $:any;
 
 @Component({
@@ -37,7 +37,7 @@ export class InventarioComponent  implements OnInit{
     });
     this.inventarioService.list().subscribe((resProductos:any) => {
       this.productos = resProductos;
-      //console.log(this.productos);
+      console.log(this.productos);
     }, err => console.log(err));
 
     this.categoriaService.list().subscribe((resCategorias:any) => {
@@ -121,7 +121,7 @@ export class InventarioComponent  implements OnInit{
     console.log(idProducto);
     this.inventarioService.eliminar(idProducto).subscribe(
       res => 
-      {console.log("proiducto eliminado");
+      {console.log(res);
       $('#modal2').modal('close');
       },err => console.log(err)
       );
