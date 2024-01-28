@@ -14,7 +14,6 @@ productos:Producto[]= [];
 producto = new Producto();
 ngOnInit(): void {
   $(document).ready(function(){
-    $('.sidenav').sidenav();
     $(".dropdown-trigger").dropdown();
     $('.modal').modal();   
       

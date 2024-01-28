@@ -8,6 +8,8 @@ import { Material } from '../../models/material';
 import { Marca } from '../../models/marca';
 import { MaterialService } from '../../services/material/material.service';
 import { MarcaService } from '../../services/marca/marca.service';
+import Swal from 'sweetalert2'
+import { data } from 'jquery';
 
 declare var $:any;
 
@@ -17,6 +19,8 @@ declare var $:any;
   styleUrls: ['./inventario.component.css']
 })
 export class InventarioComponent  implements OnInit{
+
+  idProducto = Number;
   categoria:Categoria = new Categoria();
   categorias:Categoria[]= [];
   material:Material = new Material();
@@ -27,7 +31,8 @@ export class InventarioComponent  implements OnInit{
   productos:Producto[]= []; 
   fecha = String;
   constructor(private inventarioService:InventarioService ,private categoriaService:CategoriaService,private materialService:MaterialService,private marcaService:MarcaService,private router:Router ) { }
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     $(document).ready(function(){
       $('.dropdown-trigger').dropdown();
       $('.modal').modal();  
@@ -37,31 +42,55 @@ export class InventarioComponent  implements OnInit{
     });
     this.inventarioService.list().subscribe((resProductos:any) => {
       this.productos = resProductos;
-      //console.log(this.productos);
+      for(let i=0;i<this.productos.length;i++){
+        let aux=new Date(this.productos[i].inicio_descuento) ;
+        let aux2=new Date(this.productos[i].fin_descuento );
+        //console.log(aux.toLocaleDateString());
+        //console.log(aux2.toLocaleDateString());
+
+        this.productos[i].inicio_descuento=aux.toLocaleDateString()
+        this.productos[i].fin_descuento=aux2.toLocaleDateString()
+      }
+    
+
     }, err => console.log(err));
 
     this.categoriaService.list().subscribe((resCategorias:any) => {
       this.categorias = resCategorias;
-      //console.log(this.categorias);
     }, err => console.log(err));
 
     this.materialService.list().subscribe((resMateriales:any) => {
       this.materiales = resMateriales;
-      //console.log(this.materiales);
     }, err => console.log(err));
 
     this.marcaService.list().subscribe((resMarcas:any) => {
       this.marcas = resMarcas;
-      //console.log(this.marcas);
     }, err => console.log(err));
 
+  }
+  buscarProducto(id:any){
+    this.inventarioService.listone(id).subscribe((resProducto:any) => {
+      if (resProducto ) {
+      this.producto = resProducto;
+      this.openModificarProducto();
+    }
+      else{
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Producto no encontrado',
+          showConfirmButton: true,
+          timer: 1500
+        })
+      }
+    }, err => console.log(err));
   }
 
   listone()
   {
     this.inventarioService.listone(this.producto).subscribe(res => {
-      //console.log(res);
-    },err => console.log(err));
+    },
+    err => console.log(err));
   }
   modificarProducto(idProducto:any)
   {
@@ -76,17 +105,24 @@ export class InventarioComponent  implements OnInit{
       this.marcaService.listone(this.producto.idMarca).subscribe((resMarca:any) => {
         this.marca = resMarca;
       }, err => console.log(err));
-      $('#modal1').modal('open');
+      this.openModificarProducto();
+
     }, err => console.log(err));
   }
-  modificarCategoria(categoria:any,producto:any){
-    producto.idCategoria = categoria.idCategoria;
-    for (const i in this.categorias) {
-      if (this.categorias[i].idCategoria == categoria.idCategoria) {
-        this.categoria = this.categorias[i];
-      }
-    }
 
+  openModificarProducto(){
+    $('#modal1').modal('open');
+  }
+  modificarCategoria(categoria:any,producto?:any){
+      for (const i in this.categorias) 
+      {
+        if (this.categorias[i].idCategoria == categoria.idCategoria) 
+        {
+          this.categoria = this.categorias[i];
+        }
+      }
+
+    
   }
   modificarMaterial(material:any,producto:any){
     producto.idMaterial = material.idMaterial;
@@ -104,31 +140,106 @@ export class InventarioComponent  implements OnInit{
       }
     }
   }
-
-
   guardarProducto()
   {
     this.producto.inicio_descuento=$("#inicio_descuento").val();
     this.producto.fin_descuento=$("#fin_descuento").val();
+    console.log(this.producto.fin_descuento);
     this.inventarioService.actualizar(this.producto).subscribe(
       res => {console.log(res);
       $('#modal1').modal('close');
       },err => console.log(err)
       );
   }
+  limpiarFecha(){
+
+    for (const i of this.productos) {
+      let fecha = i.inicio_descuento;
+      console.log(fecha);
+    }
+  }
   eliminarProducto(idProducto:any)
   {
-    console.log(idProducto);
-    this.inventarioService.eliminar(idProducto).subscribe(
-      res => 
-      {console.log("proiducto eliminado");
-      $('#modal2').modal('close');
-      },err => console.log(err)
-      );
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#ff9800',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => 
+    {
+        this.inventarioService.eliminar(idProducto).subscribe(
+        res =>
 
+        {
+          if (result.isConfirmed)
+          {
+            Swal.fire(
+            {
+              position: 'center',
+              icon: 'success',
+              title: 'Producto eliminado',
+              showConfirmButton: true,
+              timer: 1500
+            }
+          ).then((result) => 
+          {
+            this.inventarioService.list().subscribe
+            (
+              (resProductos:any) => 
+              {
+                this.productos = resProductos;
+              }, 
+                err => console.log(err)
+            );
+          }
+          );
+        }
+        },
+
+
+        );
+    }
+    );
   }
   return(){
     $('#modal1').modal('close');
+
+  }
+
+  openCrearProducto(){
+    this.producto = new Producto();//limpiar el objeto
+    $('#crearProducto').modal('open');
+  }
+  crearProducto(){
+    this.producto.inicio_descuento=$("#inicio_descuento").val();
+    this.producto.fin_descuento=$("#fin_descuento").val();
+    this.inventarioService.crear(this.producto).subscribe(
+      res => {console.log(res);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Producto creado',
+          showConfirmButton: true,
+          timer: 1500
+        }).then((result) =>{
+          this.inventarioService.list().subscribe((resProductos:any) => {
+            this.productos = resProductos;
+          }, err => console.log(err));
+  
+        }
+        
+        
+        );
+
+      $('#crearProducto').modal('close');
+
+      },err => console.log(err)
+      );
+
 
   }
  

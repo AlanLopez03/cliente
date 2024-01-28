@@ -1,3 +1,5 @@
+
+<app-admin-bar></app-admin-bar>
 <div class="contenedor">
     <div>Modificar usuarios</div>
 <table class="default" *ngIf="usuarios != undefined">
@@ -5,8 +7,10 @@
     <tr *ngFor="let usuario of usuarios">
   
       <td>{{usuario.nombre}}</td>
+      
+      <td>setRol()</td><!--Aqui va el rol-->
       <td><a class="modal-trigger" data-target="modalModificarusuario"  (click)="modificarUsuario(usuario.idUsuario)"><i class="material-icons">edit</i></a></td>
-      <td><a class="modal-trigger" data-target="modal2" ><i class="material-icons">delete</i></a></td>
+      <td><a ><i class="material-icons" (click)="eliminarUsuario(usuario.idUsuario)">delete</i></a></td>
 
     </tr>
   
@@ -48,7 +52,7 @@
   </div>
     <div class="modal-footer">
         <a class="modal-close btn-flat" (click)="cancelar()">Cancelar</a>
-        <a class="btn red darken-2" (click)="eliminar(usuario.idUsuario)" >Eliminar</a>
+        <a class="btn red darken-2" (click)="eliminarUsuario(usuario.idUsuario)" >Eliminar</a>
         <a class="btn" (click)="guardar()" >Modificar</a>
 
         <!--Agregar el color justo despues del boton-->
@@ -56,13 +60,3 @@
   </div>
 </div>
 
-<div id="modal2" class="modal">
-  <div class="modal-content">
-    <h4>Eliminar producto</h4>
-    <p>¿Deseas continuar?</p>
-  </div>
-  <div class="modal-footer">
-    <a  class="modal-close waves-effect waves-green btn-flat" (click)="return()">No</a>
-    <a  class="waves-effect waves-green btn-flat" (click)="eliminar(usuario.idUsuario)">Sí</a>
-  </div>
-</div>

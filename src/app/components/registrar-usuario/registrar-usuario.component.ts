@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Router } from '@angular/router';
 import { Usuario } from '../../models/Usuario';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-registrar-usuario',
   templateUrl: './registrar-usuario.component.html',
@@ -15,9 +16,15 @@ export class RegistrarUsuarioComponent {
   
     this.usuarioService.crearUsuario(this.usuario).subscribe(
       res => {
-        console.log(res);
-        //this.router.navigate(['/login']);
-        console.log('Usuario creado');
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Se ha registrado correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.router.navigateByUrl('/home');
+
         
       },
       err => console.log(err)

@@ -10,6 +10,11 @@ import { RegistrarUsuarioComponent } from './components/registrar-usuario/regist
 import { InventarioComponent } from './components/inventario/inventario.component';
 import { ControlComponent } from './components/control/control.component';
 import { ModificarUsuarioComponent } from './components/modificar-usuario/modificar-usuario.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
+import { MostrarProductosComponent } from './components/mostrar-productos/mostrar-productos.component';
+import { AdminBarComponent } from './components/admin-bar/admin-bar.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,12 @@ import { ModificarUsuarioComponent } from './components/modificar-usuario/modifi
     RegistrarUsuarioComponent,
     InventarioComponent,
     ControlComponent,
-    ModificarUsuarioComponent
+    ModificarUsuarioComponent,
+    NavigationComponent,
+    FooterComponent,
+    CarritoComponent,
+    MostrarProductosComponent,
+    AdminBarComponent
   ],
   imports: [
     FormsModule,

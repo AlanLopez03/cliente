@@ -3,6 +3,8 @@ import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Router } from '@angular/router';
 import { getUsuario } from '../../models/getUsuario';
 import { Rol } from '../../models/rolModel';
+
+import Swal from 'sweetalert2'
 declare var $: any;
 
 @Component({
@@ -33,6 +35,7 @@ export class ModificarUsuarioComponent implements OnInit {
       this.roles = resRoles;
       console.log(this.roles);
     }, err => console.log(err));
+    
   }
   modificarUsuario(idUsuario: any) {
     this.usuarioService.listone(idUsuario).subscribe((resUsuario: any) => {
@@ -48,7 +51,13 @@ export class ModificarUsuarioComponent implements OnInit {
     this.usuarioService.update(this.usuario).subscribe((resUsuario: any) => 
     {
       $('#modalModificarusuario').modal('close');
-      console.log("Usuario modificado correctamente")
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Usuario modificado correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }, err => console.log(err));
   }
 
@@ -63,15 +72,65 @@ export class ModificarUsuarioComponent implements OnInit {
       }
     }
   }
-  eliminar(idUsuario: any){
-    this.usuarioService.delete(idUsuario).subscribe((resUsuario: any) => 
+  eliminarUsuario(idUsuario: any){
+   /* this.usuarioService.delete(idUsuario).subscribe((resUsuario: any) => 
     {
       console.log("Usuario eliminado correctamente")
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Usuario eliminado correctamente',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      this.usuarioService.list().subscribe((resUsuarios: any) =>
+      {
+        this.usuarios = resUsuarios;
+        console.log(this.usuarios);
+      }, err => console.log(err));
       
-    }, err => console.log(err));
+    }, err => console.log(err));}*/
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: "No podrá revertir esta acción",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#4caf50',
+      cancelButtonColor: '#f44336',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.usuarioService.delete(idUsuario).subscribe((resUsuario: any) => 
+        {
+          console.log("Usuario eliminado correctamente")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Usuario eliminado correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.usuarioService.list().subscribe((resUsuarios: any) =>
+          {
+            this.usuarios = resUsuarios;
+            console.log(this.usuarios);
+          }, err => console.log(err));
+          
+        }, err => console.log(err));
+      }
+    });
+
+
+
   }
   return(){
     $('modal2').modal('close');
+  }
+  getRol(idRol: any){
+    this.usuarioService.getRol(idRol).subscribe((resRol: any) => {
+      this.return();
+    }, err => console.log(err));
   }
 }
 

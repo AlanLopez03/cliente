@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 
 export class LoginComponent {
 login = new loginModel();
-
 constructor(private usuarioService: UsuarioService,private router:Router) { }
 logueo(){
   if (this.login.correo == '' || this.login.password == '') {
@@ -18,20 +17,20 @@ logueo(){
     return;
   }
   this.usuarioService.login(this.login.correo, this.login.password).subscribe(
-    //res => {
-    //  console.log(res);
-    //},
-    //err => console.log(err)
+
     (res: any) => {
       if (res) 
       {
+        this.usuarioService.listone(res.idUsuario).subscribe(res => 
+        {console.log(res);},err => console.log(err));
         //localStorage.setItem('correo',this.login.correo);
+        localStorage.setItem('idUsuario',res.idUsuario);
         console.log(res);
         if (res.idRol == 1){
           
           this.router.navigateByUrl('/control');}
         else{
-          localStorage.setItem('idUsuario',res);
+          //localStorage.setItem('idUsuario',res.idUsuario);
           this.router.navigateByUrl('/home');
         }
       } 
@@ -45,5 +44,6 @@ listone(){
   this.usuarioService.listone(1).subscribe(res => {console.log(res);},err => console.log(err));
 
 }
+
 
 }

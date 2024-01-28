@@ -1,3 +1,26 @@
+<div class="crearProducto">
+  <a class="waves-effect waves-light btn modal-trigger" data-target="crearProducto" (click)="openCrearProducto()" ><i class="material-icons left">add</i>Nuevo producto</a>
+</div>
+<div class="Buscar">
+  <table>
+    <tr>
+      <td>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">search</i>
+          <input id="icon_prefix" type="text" class="active" value="" [(ngModel)]="producto.idProducto" name="busqueda" >
+          <label for="icon_prefix">Buscar por Código</label>
+        </div>
+      </td>
+      <td>
+        <a class="waves-effect waves-light btn" (click)="buscarProducto(producto.idProducto)">Buscar</a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+
 <div class="contenedor">
   <span class="titulo">
     Modificar productos
@@ -6,7 +29,8 @@
       <tr *ngFor="let producto of productos">
         <td>{{producto.nombre}}<td>
         <td><a class="modal-trigger" data-target="modal1"  (click)="modificarProducto(producto.idProducto)"><i class="material-icons">edit</i></a>
-        <a class="modal-trigger" data-target="modal2"><i class="material-icons">delete</i></a>
+        <!--<a class="modal-trigger" data-target="modal2"><i class="material-icons">delete</i></a>--->
+        <a (click)="eliminarProducto(producto.idProducto)"><i class="material-icons">delete</i></a>
       </td>
         
       </tr>
@@ -19,7 +43,7 @@
   <div class="row">
     <form class="col s12">
       <div class="titulo">
-        <span>Modificar inventario</span>
+        <span>xd</span>
       </div>
       <div class="row">
         <div class="input-field col s6">
@@ -73,7 +97,6 @@
       </div>
         <div class="row">
             <div>
-              
               <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>{{categoria.nombre}}</a>
               <ul id='dropdown1' class='dropdown-content'>
                 <li *ngFor="let categoria of categorias">
@@ -109,15 +132,96 @@
 </div>
 
 
-<div id="modal2" class="modal">
+<div id="crearProducto" class="modal">
   <div class="modal-content">
-    <h4>Eliminar producto</h4>
-    <p>¿Deseas continuar?</p>
-  </div>
-  <div class="modal-footer">
-    <a  class="modal-close waves-effect waves-green btn-flat" (click)="return()">No</a>
-    <a  class="waves-effect waves-green btn-flat" (click)="eliminarProducto(producto.idProducto)">Sí</a>
-  </div>
-</div>
+  <div class="row">
+    <form class="col s12">
+      <div class="titulo">
+        <span>Agregar un producto</span>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+            <i class="material-icons prefix">info</i>
+            <input id="code" type="text" class="validate" [(ngModel)]="producto.idProducto" name="idProducto">
+            <label for="code" class="active">Código de barras</label>
+        </div>
+        
+    </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">info</i>
+          <input  id="name" type="text" class="validate" placeholder="producto.nombre" [(ngModel)]="producto.nombre" name="Nombre">
+          <label for="name" class="active"> Nombre del producto</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">info</i>
+          <input  id="name" type="text" class="validate"  [(ngModel)]="producto.precio" name="Precio">
+          <label for="name" class="active"> Precio</label>
+        </div>
 
+        <div class="input-field col s6">
+
+          <input  id="name" type="text" class="validate" [(ngModel)]="producto.stock" name="Cantidad">
+          <label for="name" class="active"> Cantidad</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">percent</i>
+          <input  id="name" type="text" class="validate" [(ngModel)]="producto.descuento" name="descuento">
+          <label for="name" class="active"> Descuento</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">info</i>
+
+          <label for="name" class="active"> Inicio descuento</label>
+          <input type="date" class="datepicker" id="inicio_descuento" [(ngModel)]="producto.inicio_descuento" name="inicio_descuento" >
+        </div>
+
+        <div class="input-field col s6">
+          <i class="material-icons prefix">info</i>
+          <label for="name" class="active"> Fin descuento</label>
+          <input type="date" class="datepicker" id="fin_descuento"  [(ngModel)]="producto.fin_descuento" name="fin_descuento" >
+        </div>
+      </div>
+        <!--<div class="row">
+            <div>
+              <a class='dropdown-trigger btn' href='#' data-target='dropdown1'></a>
+              <ul id='dropdown1' class='dropdown-content'>
+                <li *ngFor="let categoria of categorias">
+                  <a (click)="modificarCategoria(categoria,producto)">{{categoria.nombre}}</a>
+                </li>
+              </ul>
+            </div>
+            <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Seleccionar...</a>
+              <ul id='dropdown2' class='dropdown-content'>
+                <li *ngFor="let material of materiales">
+                  <a (click)="modificarMaterial(material,producto)" >{{material.nombre}}</a>
+                </li>
+              </ul>
+            <div>
+              <a class='dropdown-trigger btn' href='#' data-target='dropdown3'>Seleccionar...</a>
+              <ul id='dropdown3' class='dropdown-content'>
+                <li *ngFor="let marca of marcas">
+                  <a (click)="modificarMarca(marca,producto)">{{marca.nombre}}</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+
+            </div>
+        </div>-->
+    </form>
+  </div>
+  </div>   
+  <div class="modal-footer">
+    <a  class="modal-close waves-effect waves-green btn-flat" (click)="crearProducto()">Guardar Datos</a>
+    <a  class="modal-close waves-effect waves-green btn-flat" >Cancelar </a>
+  </div>     
+</div>
       

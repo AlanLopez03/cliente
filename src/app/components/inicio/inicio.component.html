@@ -1,7 +1,7 @@
 
 
 
-<ul id="dropdown1" class="dropdown-content">
+<!--<ul id="dropdown1" class="dropdown-content">
   <li><a href="#!">Mi cuenta</a></li>
   <li><a href="#!">Mis compras</a></li>
   <li><a href="#!"> Salir</a></li>
@@ -34,8 +34,9 @@
   </div>
 </nav>
 
-
-
+-->
+<app-navigation>  </app-navigation>
+<!--
   <div class="cajita" *ngFor="let producto of productos" >
     <div class="card small">
       <p>{{producto.nombre}}</p>
@@ -43,7 +44,10 @@
       <p>{{producto.descripcion}}</p>
     </div>
   </div>
+-->
+<router-outlet></router-outlet>
 
+<app-footer>  </app-footer>
 
 
 

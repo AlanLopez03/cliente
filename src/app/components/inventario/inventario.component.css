@@ -27,3 +27,11 @@
     justify-content: space-between; /* Ajusta esto según tus necesidades */
     align-items: center; /* Ajusta esto según tus necesidades */
 }
+.Buscar{
+    width: 500px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    top: 10%;
+    left: 25%;
+}

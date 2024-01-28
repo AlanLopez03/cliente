@@ -19,4 +19,7 @@ export class InventarioService {
   eliminar(id : any) {
     return this.http.delete(`${environment.API_URI}/productos/eliminar/${id}`);
   }
+  crear(producto: any) {
+    return this.http.post(`${environment.API_URI}/productos/crearProducto`, producto);
+  }
 }

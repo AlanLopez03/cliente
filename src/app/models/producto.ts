@@ -5,8 +5,8 @@ export class Producto{
     stock: number;
     precio: number;
     descuento: number;
-    inicio_descuento: Date;
-    fin_descuento: Date;
+    inicio_descuento: string;
+    fin_descuento: string;
     idMaterial: number;
     idCategoria: number;
     idMarca: number;
@@ -17,8 +17,8 @@ export class Producto{
         this.stock = 1;
         this.precio = 1;
         this.descuento = 1;
-        this.inicio_descuento = new Date();
-        this.fin_descuento = new Date();
+        this.inicio_descuento =  '';
+        this.fin_descuento = '';
         this.idMaterial = 1;
         this.idCategoria = 1;
         this.idMarca = 1;
