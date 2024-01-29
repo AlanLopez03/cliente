@@ -1,7 +1,8 @@
-<div class="cajita" *ngFor="let producto of productos" >
-    <div class="card small">
+<div class="cajita" *ngFor="let producto of productos"  >
+    <div class="card small" (click)="hola()">
       <p>{{producto.nombre}}</p>
       <p>{{producto.precio}}</p>
       <p>{{producto.descripcion}}</p>
+      <a  class="waves-effect waves-light btn" (click)="agregarProducto(producto.idProducto)">Agregar</a>
     </div>
   </div>
