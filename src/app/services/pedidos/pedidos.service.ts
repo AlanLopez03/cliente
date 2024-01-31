@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 })
 export class PedidosService {
 
+<<<<<<< HEAD
   constructor(private http: HttpClient ) { }
   list(){
     return this.http.get(`${environment.API_URI}/pedidos/`);
@@ -18,5 +19,19 @@ export class PedidosService {
   } 
   eliminarPedido(idPedido: any){
     return this.http.delete(`${environment.API_URI}/pedidos/eliminar/${idPedido}`);
+=======
+  constructor(private http:HttpClient) { }
+  list(){
+    return this.http.get(`${environment.API_URI}/pedidos/`);
+  }
+  listone(id:any){
+    return this.http.get(`${environment.API_URI}/pedidos/${id}`);
+  }
+  create(pedido:any){
+    return this.http.post(`${environment.API_URI}/pedidos/crearPedido`,pedido);
+  }
+  delete(id:any){
+    return this.http.delete(`${environment.API_URI}/pedidos/eliminar/${id}`);
+>>>>>>> buena
   }
 }

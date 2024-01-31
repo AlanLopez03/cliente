@@ -8,8 +8,13 @@ import { ControlComponent } from './components/control/control.component';
 import { ModificarUsuarioComponent } from './components/modificar-usuario/modificar-usuario.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { MostrarProductosComponent } from './components/mostrar-productos/mostrar-productos.component';
+<<<<<<< HEAD
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
+=======
+import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+>>>>>>> buena
 const routes: Routes = [
 {path:"",redirectTo: "login",pathMatch: "full"},{path:'login',component: LoginComponent,},
 
@@ -21,10 +26,18 @@ children:
   {path:"",component:MostrarProductosComponent,},
 ]
 },
+{path:'control',component:ControlComponent,children:
+[
+  {path:'inventario',redirectTo: 'inventario',pathMatch: 'full'},{path:'inventario',component:InventarioComponent,},
+  {path:'pedidos',redirectTo: 'pedidos',pathMatch: 'full'},{path:'pedidos',component:PedidosComponent,},
+  {path:'reportes',redirectTo: 'reportes',pathMatch: 'full'},{path:'reportes',component:ReportesComponent,},
+  {path:'modificarUsuario',redirectTo: 'modificarUsuario',pathMatch: 'full'},{path:'modificarUsuario',component:ModificarUsuarioComponent,},
+]
+},
 {path:'nuevoUsuario',component:RegistrarUsuarioComponent,},
-{path:'inventario',redirectTo: 'inventario',pathMatch: 'full'},{path:'inventario',component:InventarioComponent,},
-{path:'control',redirectTo: 'control',pathMatch: 'full'},{path:'control',component:ControlComponent,},
-{path:'modificarUsuario',redirectTo: 'modificarUsuario',pathMatch: 'full'},{path:'modificarUsuario',component:ModificarUsuarioComponent,},
+
+//{path:'control',redirectTo: 'control',pathMatch: 'full'},{path:'control',component:ControlComponent,},
+
 
 
 ];
