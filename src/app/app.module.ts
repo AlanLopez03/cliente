@@ -15,6 +15,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { MostrarProductosComponent } from './components/mostrar-productos/mostrar-productos.component';
 import { AdminBarComponent } from './components/admin-bar/admin-bar.component';
+//import { ReportesComponent } from './components/reportes/reportes/reportes.component';
+import { PedidosComponent } from './components/pedidos/pedidos.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AdminBarComponent } from './components/admin-bar/admin-bar.component';
     FooterComponent,
     CarritoComponent,
     MostrarProductosComponent,
-    AdminBarComponent
+    AdminBarComponent,
+    ReportesComponent,
+    PedidosComponent
   ],
   imports: [
     FormsModule,
