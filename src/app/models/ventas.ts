@@ -19,4 +19,8 @@ export class intervaloFecha{
         this.fechaInicio = '';
         this.fechaFin = '';
     }
+    setDatos(fechaInicio:string, fechaFin:string){
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+    }
 }

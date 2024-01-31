@@ -19,5 +19,8 @@ export class ReportesService {
   list(){
     return this.http.get(`${environment.API_URI}/compras/`);
   }
+  getEstado(id:any){
+    return this.http.get(`${environment.API_URI}/estadosCompra/${id}`);
+  }
 
 }
