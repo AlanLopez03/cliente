@@ -22,5 +22,8 @@ export class ReportesService {
   getEstado(id:any){
     return this.http.get(`${environment.API_URI}/estadosCompra/${id}`);
   }
+  verComprasUsuario(id:any){
+    return this.http.get(`${environment.API_URI}/compras/verCompras/${id}`);
+  }
 
 }

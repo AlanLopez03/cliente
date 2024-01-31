@@ -25,4 +25,7 @@ export class InventarioService {
   buscarProducto(nombre : any) {
     return this.http.get(`${environment.API_URI}/productos/buscarNombre/`,nombre);
   }
+  filtrarProductos(id : any) {
+    return this.http.get(`${environment.API_URI}/productos/filtrarProductos/${id}`);
+  }
 }

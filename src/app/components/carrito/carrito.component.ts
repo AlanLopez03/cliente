@@ -6,12 +6,15 @@ import { Carrito,addProducto } from '../../models/carrito';
 import { Producto } from '../../models/producto';
 import { Compra } from '../../models/compra';
 import Swal from 'sweetalert2';
+import { Pedidos,nuevoPedido } from '../../models/pedidos';
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
   styleUrl: './carrito.component.css'
 })
 export class CarritoComponent implements OnInit{
+  pedidos:Pedidos[] = [];
+  pedido = new Pedidos();
   producto=new Producto();
   carrito1:Carrito = new Carrito();
   carrito:Carrito[]=[];

@@ -17,6 +17,7 @@ import { MostrarProductosComponent } from './components/mostrar-productos/mostra
 import { AdminBarComponent } from './components/admin-bar/admin-bar.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { UsuarioComprasComponent } from './components/usuario-compras/usuario-compras.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
     MostrarProductosComponent,
     AdminBarComponent,
     ReportesComponent,
-    PedidosComponent
+    PedidosComponent,
+    UsuarioComprasComponent
   ],
   imports: [
     FormsModule,

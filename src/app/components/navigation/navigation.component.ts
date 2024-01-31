@@ -6,6 +6,8 @@ import { Producto } from '../../models/producto';
 import { InventarioService } from '../../services/inventario/inventario.service';
 import { CategoriaService } from '../../services/categoria/categoria.service';
 import { Categoria } from '../../models/categoria';
+import { ChangeDetectorRef } from '@angular/core';
+import { MostrarProductosComponent } from '../mostrar-productos/mostrar-productos.component';
 declare var $:any;
 @Component({
   selector: 'app-navigation',
@@ -34,5 +36,8 @@ export class NavigationComponent implements OnInit{
     this.router.navigateByUrl('/');
 
   }
-  
+  //buscarCategoria(id:any){
+  //  this.mostrarProductosComponent.filtrarProductos(id);
+  //}
+  //(click)="buscarCategoria(categoria.idCategoria)
 }

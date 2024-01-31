@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { addProducto} from '../../models/carrito';
 import { CarritoService } from '../../services/carrito/carrito.service';
 import Swal from 'sweetalert2';
+import { ChangeDetectorRef } from '@angular/core';
 declare var $:any;
 @Component({
   selector: 'app-mostrar-productos',
@@ -64,6 +65,15 @@ constructor(private inventarioService: InventarioService,private carritoService:
     );
 
     
+  }
+  filtrarProductos(id:any){
+    this.inventarioService.filtrarProductos(id).subscribe(
+      (res:any) => {
+        this.productos = res;
+        console.log(this.productos);
+      },
+      err => console.log(err)
+    );
   }
 
 }

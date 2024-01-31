@@ -10,6 +10,7 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { MostrarProductosComponent } from './components/mostrar-productos/mostrar-productos.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
+import { UsuarioComprasComponent } from './components/usuario-compras/usuario-compras.component';
 const routes: Routes = [
 {path:"",redirectTo: "login",pathMatch: "full"},{path:'login',component: LoginComponent,},
 
@@ -19,6 +20,7 @@ children:
   {path:'carrito',redirectTo: 'carrito',pathMatch: 'full'},
   {path:'carrito',component:CarritoComponent,},
   {path:"",component:MostrarProductosComponent,},
+  {path:'usuarioCompras',redirectTo: 'usuarioCompras',pathMatch: 'full'},{path:'usuarioCompras',component:UsuarioComprasComponent,}
 ]
 },
 {path:'control',component:ControlComponent,children:
