@@ -21,8 +21,8 @@ constructor(private carritoService: CarritoService, private inventarioService: I
     this.carritoService.listone(localStorage.getItem('idUsuario')).subscribe(
       (res:any) => {
         this.carrito = res;
-        //console.log("hola");
-        //console.log(this.carrito);
+        console.log("hola");
+        console.log(this.carrito);
       },
       err => console.log(err)
     );
@@ -64,7 +64,6 @@ constructor(private carritoService: CarritoService, private inventarioService: I
       (res:any) => 
       {
         stock = res.stock;//Obtiene el stock del producto
-        //console.log(stock);
         if (stock>0)
         {  
           this.carritoService.insertar(this.inserta).subscribe((res:any) => 

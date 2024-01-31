@@ -18,6 +18,11 @@ productos: Producto []= [];
 buscar:string='';
 constructor(private inventarioService: InventarioService,private carritoService:CarritoService,private router:Router) { }
   ngOnInit(): void {
+    $(document).ready(function(){
+      $('.carousel').carousel({
+}
+      );
+    });
     this.inventarioService.list().subscribe(
       (res:any) => {
         this.productos = res;

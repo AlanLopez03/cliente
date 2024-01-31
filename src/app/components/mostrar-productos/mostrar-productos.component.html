@@ -1,10 +1,20 @@
 <div class="container">
+<div class="carousel">
+  <a class="carousel-item"><img  src="../../../assets/images/img1.png" width=1000px height=300px></a>
+  <a class="carousel-item"><img  src="../../../assets/images/img2.png" width=1000px height=300px></a>
+  <a class="carousel-item"><img  src="../../../assets/images/img3.png" width=1000px height=300px></a>
+  <a class="carousel-item"><img  src="../../../assets/images/img4.png" width=1000px height=300px></a>
+  <a class="carousel-item"><img  src="../../../assets/images/img5.png" width=1000px height=300px></a>
+</div>
+</div>
+
+<div class="container">
 <div class="cajita" *ngFor="let producto of productos"  >
     <div class="card small" >
       <p>{{producto.nombre}}</p>
       <p>{{producto.precio}}</p>
       <p>{{producto.descripcion}}</p>
-      <a  class="waves-effect waves-light btn" (click)="agregarProducto(producto.idProducto)">Agregar</a>
+      <a  class="waves-effect waves-light btn" (click)="agregarProducto(producto.idProducto)"><i class="material-icons left">add</i>Agregar</a>
     </div>
   </div>
 </div>
