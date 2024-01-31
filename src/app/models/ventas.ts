@@ -1,14 +1,14 @@
 export class ventas{
     idCompra: number;
-    fechaCompra: Date;
-    total: number;
-    idEstadoCompra: number;
+    fecha: Date;
+    monto: number;
+    idEdo: number;
     idCliente: number;
     constructor(){
         this.idCompra = 0;
-        this.fechaCompra = new Date();
-        this.total = 0;
-        this.idEstadoCompra = 0;
+        this.fecha = new Date();
+        this.monto = 0;
+        this.idEdo = 0;
         this.idCliente = 0;
     }
 }

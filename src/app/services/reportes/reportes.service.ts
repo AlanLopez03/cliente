@@ -13,8 +13,11 @@ export class ReportesService {
   verMenosVendidos(fecha:any){
     return this.http.get(`${environment.API_URI}/compras/verMenosVendidos`,fecha);
   }
-  verVentas(fecha:any){
-    return this.http.get(`${environment.API_URI}/compras/verVentas`,fecha);
+  verVentasPeriodo(fecha:any){
+    return this.http.post(`${environment.API_URI}/compras/verVentas`,fecha);
+  }
+  list(){
+    return this.http.get(`${environment.API_URI}/compras/`);
   }
 
 }

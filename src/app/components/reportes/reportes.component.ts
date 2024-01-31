@@ -15,12 +15,12 @@ export class ReportesComponent implements OnInit{
   fecha:intervaloFecha = new intervaloFecha();
 constructor(private router: Router, private usuarioService: UsuarioService, private inventarioService: InventarioService, private reportesService: ReportesService) { }
 
-ngOnInit() {
-  this.reportesService.verVentas(this.fecha).subscribe( 
-    (res:any) => {
-      this.ventas = res;
-    },
-    err => console.error(err)
-  );
+ngOnInit(): void {//Ya jala
+  this.reportesService.list().subscribe((res:any) => {
+    this.ventas = res;
+   //console.log(this.ventas);
+  });
+
 }
+
 }
