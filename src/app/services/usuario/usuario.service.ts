@@ -40,4 +40,15 @@ export class UsuarioService {
   recomendaciones(idUsuario: any){
     return this.http.get(`${environment.API_URI}/usuarios/recomendaciones/${idUsuario}`);
   }
+  getDomicilio(idUsuario: any){
+    return this.http.get(`${environment.API_URI}/domicilios/${idUsuario}`);
+  }
+  crearDomicilio(domicilio: any){
+    return this.http.post(`${environment.API_URI}/domicilios/crearDomicilio/`, domicilio);
+  }
+  //No funciona o tal vez si
+  actualizarDomicilio(domicilio: any){
+    return this.http.put(`${environment.API_URI}/domicilios/actualizar/${domicilio.idDomicilio}`, domicilio);
+  }
+
 }
