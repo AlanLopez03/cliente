@@ -22,4 +22,7 @@ export class CarritoService {
   search(nombre : any) {
     return this.http.get(`${environment.API_URI}/carrito/buscar`,nombre);
   }
+  comprar(id:any,carrito: any) {
+    return this.http.post(`${environment.API_URI}/compras/crearCompra/${id}`,carrito);
+  }
 }

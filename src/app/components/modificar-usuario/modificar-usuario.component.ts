@@ -14,7 +14,6 @@ declare var $: any;
 })
 export class ModificarUsuarioComponent implements OnInit {
   constructor(private usuarioService: UsuarioService, private router: Router) { }
-
   usuarios: getUsuario[] = [];
   usuario: getUsuario = new getUsuario();
   rol: Rol = new Rol();
@@ -73,23 +72,7 @@ export class ModificarUsuarioComponent implements OnInit {
     }
   }
   eliminarUsuario(idUsuario: any){
-   /* this.usuarioService.delete(idUsuario).subscribe((resUsuario: any) => 
-    {
-      console.log("Usuario eliminado correctamente")
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Usuario eliminado correctamente',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      this.usuarioService.list().subscribe((resUsuarios: any) =>
-      {
-        this.usuarios = resUsuarios;
-        console.log(this.usuarios);
-      }, err => console.log(err));
-      
-    }, err => console.log(err));}*/
+
     Swal.fire({
       title: '¿Está seguro?',
       text: "No podrá revertir esta acción",
@@ -132,5 +115,6 @@ export class ModificarUsuarioComponent implements OnInit {
       this.return();
     }, err => console.log(err));
   }
+  
 }
 

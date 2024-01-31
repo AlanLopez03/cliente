@@ -30,6 +30,7 @@ export class InventarioComponent  implements OnInit{
   producto = new Producto();
   productos:Producto[]= []; 
   fecha = String;
+
   constructor(private inventarioService:InventarioService ,private categoriaService:CategoriaService,private materialService:MaterialService,private marcaService:MarcaService,private router:Router ) { }
   ngOnInit(): void 
   {
@@ -140,14 +141,31 @@ export class InventarioComponent  implements OnInit{
       }
     }
   }
+  modificarFechaInicio(date:any)
+  {
+    this.producto.inicio_descuento = date;
+  }
   guardarProducto()
   {
     this.producto.inicio_descuento=$("#inicio_descuento").val();
     this.producto.fin_descuento=$("#fin_descuento").val();
-    console.log(this.producto.fin_descuento);
+
     this.inventarioService.actualizar(this.producto).subscribe(
       res => {console.log(res);
       $('#modal1').modal('close');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Producto actualizado',
+        showConfirmButton: true,
+        timer: 1500
+      }).then((result) =>{
+      this.inventarioService.list().subscribe((resProductos:any) => {
+        this.productos = resProductos;
+        
+      });
+    });
+
       },err => console.log(err)
       );
   }
@@ -212,6 +230,12 @@ export class InventarioComponent  implements OnInit{
 
   openCrearProducto(){
     this.producto = new Producto();//limpiar el objeto
+    //this.categoria = new Categoria();
+    //this.material = new Material();
+    //this.marca = new Marca();
+    //this.categoria.set(1);
+    //this.material.set(1);
+    //this.marca.set(1);
     $('#crearProducto').modal('open');
   }
   crearProducto(){
@@ -224,7 +248,7 @@ export class InventarioComponent  implements OnInit{
           icon: 'success',
           title: 'Producto creado',
           showConfirmButton: true,
-          timer: 1500
+          
         }).then((result) =>{
           this.inventarioService.list().subscribe((resProductos:any) => {
             this.productos = resProductos;

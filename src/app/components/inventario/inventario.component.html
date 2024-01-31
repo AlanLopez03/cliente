@@ -1,3 +1,4 @@
+<app-admin-bar></app-admin-bar>
 <div class="crearProducto">
   <a class="waves-effect waves-light btn modal-trigger" data-target="crearProducto" (click)="openCrearProducto()" ><i class="material-icons left">add</i>Nuevo producto</a>
 </div>
@@ -7,7 +8,7 @@
       <td>
         <div class="input-field col s6">
           <i class="material-icons prefix">search</i>
-          <input id="icon_prefix" type="text" class="active" value="" [(ngModel)]="producto.idProducto" name="busqueda" >
+          <input id="icon_prefix" type="text" class="active" [(ngModel)]="producto.idProducto" name="busqueda" >
           <label for="icon_prefix">Buscar por Código</label>
         </div>
       </td>
@@ -21,7 +22,7 @@
 
 
 
-<div class="contenedor">
+<div class="contenedor">    
   <span class="titulo">
     Modificar productos
   </span>
@@ -43,7 +44,7 @@
   <div class="row">
     <form class="col s12">
       <div class="titulo">
-        <span>xd</span>
+        <span>Modificar datos del producto</span>
       </div>
       <div class="row">
         <div class="input-field col s6">
@@ -84,9 +85,11 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
-
           <label for="name" class="active"> Inicio descuento</label>
-          <input type="text" class="datepicker" id="inicio_descuento" [(ngModel)]="producto.inicio_descuento" name="inicio_descuento" >
+          <input type="text" class="datepicker" id="inicio_descuento" [(ngModel)]="producto.inicio_descuento" name="inicio_descuento">
+          
+          <!--<input [(ngModel)]="producto.inicio_descuento" type="text" id="fechaIni" #fechaI
+              name="fecha1" (change)="modificarFechaInicio(fechaI.value)" class="datepicker">-->
         </div>
 
         <div class="input-field col s6">
@@ -95,33 +98,29 @@
           <input type="text" class="datepicker" id="fin_descuento"  [(ngModel)]="producto.fin_descuento" name="fin_descuento" >
         </div>
       </div>
-        <div class="row">
-            <div>
-              <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>{{categoria.nombre}}</a>
-              <ul id='dropdown1' class='dropdown-content'>
-                <li *ngFor="let categoria of categorias">
-                  <a (click)="modificarCategoria(categoria,producto)">{{categoria.nombre}}</a>
-                </li>
-              </ul>
-            </div>
-            <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>{{material.nombre}}</a>
-              <ul id='dropdown2' class='dropdown-content'>
-                <li *ngFor="let material of materiales">
-                  <a (click)="modificarMaterial(material,producto)" >{{material.nombre}}</a>
-                </li>
-              </ul>
-            <div>
-              <a class='dropdown-trigger btn' href='#' data-target='dropdown3'>{{marca.nombre}}</a>
-              <ul id='dropdown3' class='dropdown-content'>
-                <li *ngFor="let marca of marcas">
-                  <a (click)="modificarMarca(marca,producto)">{{marca.nombre}}</a>
-                </li>
-              </ul>
-            </div>
-            <div>
-
-            </div>
+      <div class="row">
+        <div>
+          <select [(ngModel)]='producto.idCategoria' class="browser-default" name="categorias">
+            <option *ngFor="let categoria of categorias" [value]="categoria.idCategoria">
+            {{categoria.nombre}}
+            </option>
+          </select>
         </div>
+        <select [(ngModel)]='producto.idMaterial' class="browser-default" name="materiales">
+          <option *ngFor="let material of materiales" [value]="material.idMaterial">
+          {{material.nombre}}
+          </option>
+        </select>
+        <div>
+          <select [(ngModel)]='producto.idMarca' class="browser-default" name="marcas">
+            <option *ngFor="let marca of marcas" [value]="marca.idMarca">
+            {{marca.nombre}}
+            </option>
+          </select>
+        </div>
+        <div>
+        </div>
+    </div>
     </form>
   </div>
   </div>   
@@ -189,33 +188,31 @@
           <input type="date" class="datepicker" id="fin_descuento"  [(ngModel)]="producto.fin_descuento" name="fin_descuento" >
         </div>
       </div>
-        <!--<div class="row">
+        <div class="row">
             <div>
-              <a class='dropdown-trigger btn' href='#' data-target='dropdown1'></a>
-              <ul id='dropdown1' class='dropdown-content'>
-                <li *ngFor="let categoria of categorias">
-                  <a (click)="modificarCategoria(categoria,producto)">{{categoria.nombre}}</a>
-                </li>
-              </ul>
+              <select [(ngModel)]='producto.idCategoria' class="browser-default" name="categorias">
+                <option *ngFor="let categoriaItem of categorias" [value]="categoriaItem.idCategoria" >
+                  {{categoriaItem.nombre}}
+                </option>
+              </select>
+              
             </div>
-            <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Seleccionar...</a>
-              <ul id='dropdown2' class='dropdown-content'>
-                <li *ngFor="let material of materiales">
-                  <a (click)="modificarMaterial(material,producto)" >{{material.nombre}}</a>
-                </li>
-              </ul>
+            <select [(ngModel)]='producto.idMaterial' class="browser-default" name="materiales">
+              <option for="materiales" *ngFor="let material of materiales" [value]="material.idMaterial">
+              {{material.nombre}}
+              </option>
+            </select>
             <div>
-              <a class='dropdown-trigger btn' href='#' data-target='dropdown3'>Seleccionar...</a>
-              <ul id='dropdown3' class='dropdown-content'>
-                <li *ngFor="let marca of marcas">
-                  <a (click)="modificarMarca(marca,producto)">{{marca.nombre}}</a>
-                </li>
-              </ul>
+              <select [(ngModel)]='producto.idMarca' class="browser-default" name="marcas">
+                <option *ngFor="let marca of marcas" [value]="marca.idMarca">
+                {{marca.nombre}}
+                </option>
+              </select>
             </div>
             <div>
 
             </div>
-        </div>-->
+        </div>
     </form>
   </div>
   </div>   

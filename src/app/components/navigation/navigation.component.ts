@@ -2,6 +2,8 @@ import { Component,OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { loginModel } from '../../models/loginModel';
 import { Router } from '@angular/router';
+import { Producto } from '../../models/producto';
+import { InventarioService } from '../../services/inventario/inventario.service';
 declare var $:any;
 @Component({
   selector: 'app-navigation',

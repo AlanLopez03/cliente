@@ -4,6 +4,7 @@ import { InventarioService } from '../../services/inventario/inventario.service'
 import { Router } from '@angular/router';
 import { Carrito,addProducto } from '../../models/carrito';
 import { Producto } from '../../models/producto';
+import { Compra } from '../../models/compra';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-carrito',
@@ -15,19 +16,19 @@ export class CarritoComponent implements OnInit{
   carrito1:Carrito = new Carrito();
   carrito:Carrito[]=[];
 constructor(private carritoService: CarritoService, private inventarioService: InventarioService, private router: Router) { }
-
+  inserta=new addProducto();
   ngOnInit(): void {
     this.carritoService.listone(localStorage.getItem('idUsuario')).subscribe(
       (res:any) => {
         this.carrito = res;
         //console.log("hola");
-        console.log(this.carrito);
+        //console.log(this.carrito);
       },
       err => console.log(err)
     );
   }
   eliminarProducto(id:any){
-    console.log(id);
+   // console.log(id);
     Swal.fire({
       title: '¿Está seguro que desea eliminar el producto del carrito?',
       text: "Esta acción no se puede revertir",
@@ -56,21 +57,34 @@ constructor(private carritoService: CarritoService, private inventarioService: I
 
   }
   insertarProducto(id:any,decremento?:any){//Se debe mandar un objeto de tipo addProducto
-
-    var objeto=new addProducto();
-    if (decremento!=-1)
-    
-      objeto.setAtributos(parseInt(localStorage.getItem('idUsuario')??'1'),id,1);
-    else
-      objeto.setAtributos(parseInt(localStorage.getItem('idUsuario')??'1'),id,-1);
-
-    this.carritoService.insertar(objeto).subscribe(
-      (res:any) => {
-        console.log(res);
-        this.ngOnInit();
+    var a=localStorage.getItem('idUsuario')??'1';
+    var stock=0;
+    this.inserta.setAtributos(id,parseInt(a),1);
+    this.inventarioService.listone(id).subscribe(
+      (res:any) => 
+      {
+        stock = res.stock;//Obtiene el stock del producto
+        //console.log(stock);
+        if (stock>0)
+        {  
+          this.carritoService.insertar(this.inserta).subscribe((res:any) => 
+          {
+            this.ngOnInit();
+          },
+          err => console.log(err));
+        }
+        else
+        {
+          Swal.fire(
+            'Error',
+            'No hay stock suficiente',
+            'error')
+          }
       },
-      err => console.log(err)
+      err=>console.log(err)
+      
     );
+
   }
   limpiarCarrito(){
     var id=localStorage.getItem('idUsuario');
@@ -103,5 +117,31 @@ constructor(private carritoService: CarritoService, private inventarioService: I
   }
   pagar(){
     this.router.navigate(['/pagar']);
+  }
+  comprarCarrito(){
+    var objeto=new Compra();
+    objeto.set("2024-01-30",1);//Cambiar fecha
+    this.carritoService.comprar(localStorage.getItem('idUsuario'),objeto).subscribe(
+      (res:any) => {
+        if (res==false)
+        {
+          Swal.fire(
+            'Error',
+            'No hay suficiente stock',
+            'error'
+          )
+        }
+        else{
+        Swal.fire(
+          'Compra realizada',
+          'La compra se ha realizado con éxito',
+          'success'
+        )
+        this.ngOnInit();
+      }
+        
+      },
+      err => console.log(err)
+    );
   }
 }

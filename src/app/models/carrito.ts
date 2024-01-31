@@ -19,17 +19,17 @@ export class Carrito{
 
 }
 export class addProducto{
-    idCliente:number;
     idProducto:number;
+    idCliente:number;
     cantidad:number;
     constructor(){
         this.idCliente=0;
         this.idProducto=0;
         this.cantidad=0;
     }
-    setAtributos(idCliente:number,idProducto:number,cantidad:number){
-        this.idCliente=idCliente;
+    setAtributos(idProducto:number,idCliente:number,cantidad:number){
         this.idProducto=idProducto;
+        this.idCliente=idCliente;
         this.cantidad=cantidad;
     }
 }

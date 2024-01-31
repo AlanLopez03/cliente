@@ -5,4 +5,7 @@ export class Marca{
         this.idMarca = 1;
         this.nombre = '';
     }
+    set(idMarca: number) {
+        this.idMarca = idMarca;
+    }
 }

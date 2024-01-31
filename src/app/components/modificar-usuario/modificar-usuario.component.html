@@ -3,15 +3,15 @@
 <div class="contenedor">
     <div>Modificar usuarios</div>
 <table class="default" *ngIf="usuarios != undefined">
-
+    <tr>
+      <th>Nombre</th>
+      <th>Modificar datos</th>
+      <th>Eliminar</th>
+    </tr>
     <tr *ngFor="let usuario of usuarios">
-  
       <td>{{usuario.nombre}}</td>
-      
-      <td>setRol()</td><!--Aqui va el rol-->
       <td><a class="modal-trigger" data-target="modalModificarusuario"  (click)="modificarUsuario(usuario.idUsuario)"><i class="material-icons">edit</i></a></td>
       <td><a ><i class="material-icons" (click)="eliminarUsuario(usuario.idUsuario)">delete</i></a></td>
-
     </tr>
   
   </table>
