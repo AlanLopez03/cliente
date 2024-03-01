@@ -50,7 +50,7 @@ ngOnInit(): void {//Ya jala
 
 }
 buscar(){
-
+  //funcion para buscar con un rango de fechas
   var inicio = $("#inicio").val();
   var fin = $("#fin").val();
   if (inicio != '' && fin != '') 
