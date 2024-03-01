@@ -6,6 +6,10 @@ import { ReportesService } from '../../services/reportes/reportes.service';
 import { ventas } from '../../models/ventas';
 import { Estados } from '../../models/estados';
 import { intervaloFecha } from '../../models/ventas';
+import { PedidosService } from '../../services/pedidos/pedidos.service';
+import { Pedidos } from '../../models/pedidos';
+import { Producto } from '../../models/producto';
+
 import Swal from 'sweetalert2';
 declare var $: any;
 @Component({
@@ -19,7 +23,9 @@ export class ReportesComponent implements OnInit
   ventas:ventas[] = [];
   fechas:intervaloFecha = new intervaloFecha();
   fecha:intervaloFecha = new intervaloFecha();
-constructor(private router: Router, private usuarioService: UsuarioService, private inventarioService: InventarioService, private reportesService: ReportesService) { }
+
+
+constructor(private router: Router,private reportesService:ReportesService, private usuarioService: UsuarioService,private pedidosService:PedidosService,private inventarioService:InventarioService) { }
 
 ngOnInit(): void {//Ya jala
   $(document).ready(function(){
@@ -64,5 +70,22 @@ else
     title: 'Oops... :(',
     text: 'Debes establecer un rango de fechas',
   })
-}}
+}
+}
+verDetalles(id:number)//Recibe el id de la compra y lo busca en los pedidos
+{
+  this.pedidosService.verPedidos(id).subscribe((res:any) => {
+    var pedido= res;
+    var id=pedido[0].idProducto;//Obtiene el id del producto
+    this.inventarioService.listone(id).subscribe((res:any) => 
+    {
+      var producto=res;
+    },
+      err => console.log(err)
+    );
+  })
+  
+}
+
+
 }

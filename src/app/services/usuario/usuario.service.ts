@@ -2,17 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { get } from 'jquery';
-
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-
   constructor(private http: HttpClient) { }
   login(correo: any, password: any) {
     return this.http.get(`${environment.API_URI}/usuarios/login/${correo}/${password}`);
   }
-
   listone(id : any) {
     return this.http.get(`${environment.API_URI}/usuarios/${id}`);
     }
@@ -46,7 +43,6 @@ export class UsuarioService {
   crearDomicilio(domicilio: any){
     return this.http.post(`${environment.API_URI}/domicilios/crearDomicilio/`, domicilio);
   }
-  //No funciona o tal vez si
   actualizarDomicilio(domicilio: any){
     return this.http.put(`${environment.API_URI}/domicilios/actualizar/${domicilio.idDomicilio}`, domicilio);
   }

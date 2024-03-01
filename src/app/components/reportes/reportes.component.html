@@ -24,6 +24,7 @@
         <th>Total</th>
         <th>ID Cliente</th>
         <th>Estado</th>
+
     </tr>
     <tr *ngFor="let venta of ventas;let i=index">
         <ng-container *ngIf="estados[i]">
@@ -32,6 +33,9 @@
         <td><a>{{venta.monto}}</a> </td>
         <td><a>{{venta.idCliente}}</a> </td>
         <td><a >{{estados[i].nombre}}</a></td>
+        <th>
+            <a class="waves-effect waves-light btn" (click)="verDetalles(venta.idCompra)">Detalles</a>
+        </th>
         </ng-container>
     </tr>
 </table>

@@ -19,4 +19,8 @@ export class PedidosService {
   delete(id:any){
     return this.http.delete(`${environment.API_URI}/pedidos/eliminar/${id}`);
   }
+  verPedidos(id:any){
+    return this.http.get(`${environment.API_URI}/pedidos/verPedidos/${id}`);
+  }
+
 }

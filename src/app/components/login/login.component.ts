@@ -5,9 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
-})
-
+  styleUrl: './login.component.css'})
 export class LoginComponent {
 login = new loginModel();
 constructor(private usuarioService: UsuarioService,private router:Router) { }
@@ -17,22 +15,17 @@ logueo(){
     return;
   }
   this.usuarioService.login(this.login.correo, this.login.password).subscribe(
-
     (res: any) => {
       if (res) 
       {
         this.usuarioService.listone(res.idUsuario).subscribe(res => 
         {console.log(res);},err => console.log(err));
-        //localStorage.setItem('correo',this.login.correo);
         localStorage.setItem('idUsuario',res.idUsuario);
         console.log(res);
-        if (res.idRol == 1){
-          
+        if (res.idRol == 1){   
           this.router.navigateByUrl('/control');}
-        else{
-          //localStorage.setItem('idUsuario',res.idUsuario);
+        else
           this.router.navigateByUrl('/home');
-        }
       } 
       else {
         alert('Usuario o contraseña incorrectos');
@@ -41,9 +34,5 @@ logueo(){
   );
 }
 listone(){
-  this.usuarioService.listone(1).subscribe(res => {console.log(res);},err => console.log(err));
-
-}
-
-
+  this.usuarioService.listone(1).subscribe(res => {console.log(res);},err => console.log(err));}
 }
