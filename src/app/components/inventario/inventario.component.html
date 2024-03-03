@@ -1,9 +1,6 @@
 
-<div class="crearProducto">
-  <a class="waves-effect waves-light btn modal-trigger" data-target="crearProducto" (click)="openCrearProducto()" ><i class="material-icons left">add</i>Nuevo producto</a>
-</div>
+
 <div class="Buscar">
-  
   <table>
     <tr>
       <td>
@@ -16,6 +13,11 @@
       <td>
         <a class="waves-effect waves-light btn" (click)="buscarProducto(producto.idProducto)">Buscar</a>
       </td>
+    </tr>
+    <tr>
+      <div class="crearProducto">
+        <a class="waves-effect waves-light btn modal-trigger" data-target="crearProducto" (click)="openCrearProducto()" ><i class="material-icons left">add</i>Nuevo producto</a>
+      </div>
     </tr>
   </table>
 </div>

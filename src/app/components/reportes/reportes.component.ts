@@ -9,8 +9,10 @@ import { intervaloFecha } from '../../models/ventas';
 import { PedidosService } from '../../services/pedidos/pedidos.service';
 import { Pedidos } from '../../models/pedidos';
 import { Producto } from '../../models/producto';
+import { Usuario } from '../../models/Usuario';
 
 import Swal from 'sweetalert2';
+import { error } from 'jquery';
 declare var $: any;
 @Component({
   selector: 'app-reportes',
@@ -23,6 +25,11 @@ export class ReportesComponent implements OnInit
   ventas:ventas[] = [];
   fechas:intervaloFecha = new intervaloFecha();
   fecha:intervaloFecha = new intervaloFecha();
+  productos:Producto[] = [];
+  producto:Producto = new Producto();
+  cliente:Usuario=new Usuario();
+  clientes:Usuario[]=[];
+  pedidos:Pedidos[]=[];
 
 
 constructor(private router: Router,private reportesService:ReportesService, private usuarioService: UsuarioService,private pedidosService:PedidosService,private inventarioService:InventarioService) { }
@@ -32,8 +39,9 @@ ngOnInit(): void {//Ya jala
     $('.datepicker').datepicker({
       format: 'yyyy-mm-dd'}
     );
+    $('.modal').modal();
   });
-  console.log("Hola");
+ // Debe mostrar las compras,no los pedidos
   this.reportesService.list().subscribe((res:any) => {
     this.ventas = res;
     for (const venta1 of this.ventas)
@@ -46,7 +54,7 @@ ngOnInit(): void {//Ya jala
       );
     }
   });
-  console.log(this.ventas);
+  //console.log(this.ventas);
 
 }
 buscar(){
@@ -72,18 +80,33 @@ else
   })
 }
 }
-verDetalles(id:number)//Recibe el id de la compra y lo busca en los pedidos
+verDetalles(id:number,idCliente:number)//Recibe el id de la compra y lo busca en los pedidos
 {
-  this.pedidosService.verPedidos(id).subscribe((res:any) => {
-    var pedido= res;
-    var id=pedido[0].idProducto;//Obtiene el id del producto
-    this.inventarioService.listone(id).subscribe((res:any) => 
+  //Limpiar los arreglos de datos
+  this.productos=[];
+  this.cliente=new Usuario();
+  this.pedidos=[];
+  this.pedidosService.verPedidos(id).subscribe((res:any) => 
+  {
+    this.pedidos= res;
+    for (const pedido of this.pedidos)
+    {  
+      var id=pedido.idProducto;//Obtiene el id del producto
+      this.inventarioService.listone(id).subscribe((res:any) => 
     {
-      var producto=res;
+      this.productos.push(res);
+    },err => console.log(err));
+    }
+    this.usuarioService.listone(idCliente).subscribe((res:any) =>{
+      this.cliente=res;//Obtiene los datos del cliente
+      console.log("Cliente",this.cliente.nombre); 
+      console.log("productos",this.productos);  
     },
-      err => console.log(err)
-    );
-  })
+    error => console.log(error)
+    )
+    $("#modal1").modal('open');
+  }
+  )
   
 }
 
