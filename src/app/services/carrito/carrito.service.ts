@@ -25,4 +25,7 @@ export class CarritoService {
   comprar(id:any,carrito: any) {
     return this.http.post(`${environment.API_URI}/compras/crearCompra/${id}`,carrito);
   }
+  listarCompras(id:any) {
+    return this.http.get(`${environment.API_URI}/carrito/listarCompras/${id}`);
+  }
 }

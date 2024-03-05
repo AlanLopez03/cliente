@@ -46,9 +46,6 @@ export class InventarioComponent  implements OnInit{
       for(let i=0;i<this.productos.length;i++){
         let aux=new Date(this.productos[i].inicio_descuento) ;
         let aux2=new Date(this.productos[i].fin_descuento );
-        //console.log(aux.toLocaleDateString());
-        //console.log(aux2.toLocaleDateString());
-
         this.productos[i].inicio_descuento=aux.toLocaleDateString()
         this.productos[i].fin_descuento=aux2.toLocaleDateString()
       }
@@ -145,13 +142,15 @@ export class InventarioComponent  implements OnInit{
   {
     this.producto.inicio_descuento = date;
   }
+
   guardarProducto()
   {
     this.producto.inicio_descuento=$("#inicio_descuento").val();
     this.producto.fin_descuento=$("#fin_descuento").val();
-
-    this.inventarioService.actualizar(this.producto).subscribe(
-      res => {console.log(res);
+    if (this.producto!=null && this.producto.nombre.length>0 && this.producto.precio!=null && this.producto.stock!=null && this.producto.idProducto!=null)
+    {
+      this.inventarioService.actualizar(this.producto).subscribe(
+      res => {
       $('#modal1').modal('close');
       Swal.fire({
         position: 'center',
@@ -164,16 +163,24 @@ export class InventarioComponent  implements OnInit{
         this.productos = resProductos;
         
       });
-    });
-
-      },err => console.log(err)
-      );
+    });},err => console.log(err));
+    }
+    else
+    
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error al actualizar',
+        showConfirmButton: true,
+        timer: 1500
+      });
+    
   }
   limpiarFecha(){
 
     for (const i of this.productos) {
       let fecha = i.inicio_descuento;
-      console.log(fecha);
+      
     }
   }
   eliminarProducto(idProducto:any)
@@ -242,7 +249,7 @@ export class InventarioComponent  implements OnInit{
     this.producto.inicio_descuento=$("#inicio_descuento").val();
     this.producto.fin_descuento=$("#fin_descuento").val();
     this.inventarioService.crear(this.producto).subscribe(
-      res => {console.log(res);
+      res => {
         Swal.fire({
           position: 'center',
           icon: 'success',

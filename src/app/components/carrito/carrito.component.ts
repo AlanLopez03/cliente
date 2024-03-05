@@ -7,6 +7,7 @@ import { Producto } from '../../models/producto';
 import { Compra } from '../../models/compra';
 import Swal from 'sweetalert2';
 import { Pedidos,nuevoPedido } from '../../models/pedidos';
+import { error } from 'jquery';
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
@@ -62,6 +63,9 @@ constructor(private carritoService: CarritoService, private inventarioService: I
   insertarProducto(id:any,decremento?:any){//Se debe mandar un objeto de tipo addProducto
     var a=localStorage.getItem('idUsuario')??'1';
     var stock=0;
+    if(decremento)
+    this.inserta.setAtributos(id,parseInt(a),-1);
+    else
     this.inserta.setAtributos(id,parseInt(a),1);
     this.inventarioService.listone(id).subscribe(
       (res:any) => 
@@ -89,7 +93,7 @@ constructor(private carritoService: CarritoService, private inventarioService: I
 
   }
   limpiarCarrito(){
-    var id=localStorage.getItem('idUsuario');
+    var idUsuario=localStorage.getItem('idUsuario');
     Swal.fire({
       title: '¿Está seguro que desea limpiar el carrito?',
       text: "Esta acción no se puede revertir",
@@ -102,7 +106,28 @@ constructor(private carritoService: CarritoService, private inventarioService: I
     }).then((result) => {
     if (result.isConfirmed)
     {
-      this.carritoService.limpiarCarrito(id).subscribe(
+      //Debe agregar al stock si se limpia el carrito
+      this.carritoService.listarCompras(idUsuario).subscribe((res:any)=>
+      {
+      console.log(res);
+       //Obtenemos el arreglo con el carrito de productos
+      var productos=res;//Obtener la cantidad de productos en el carrito
+      for (let producto of productos)
+      {
+        var datos={
+          idProducto:producto.idProducto,
+          stock:producto.cantidad
+        }
+        this.inventarioService.agregarStock(datos).subscribe(
+          (res:any) => { 
+            console.log(res);
+          },
+          err => console.log(err)
+        );
+
+      }
+
+      this.carritoService.limpiarCarrito(idUsuario).subscribe(
       (res:any) => {
         
         this.ngOnInit();
@@ -111,9 +136,13 @@ constructor(private carritoService: CarritoService, private inventarioService: I
           'El carrito se ha limpiado con éxito',
           'success'
         )
-      },
-      err => console.log(err)
-    );
+      },err => console.log(err));
+    },err=>console.log(err)
+      );
+
+
+
+
   }
 })
   }

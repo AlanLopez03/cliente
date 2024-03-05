@@ -7,7 +7,7 @@
 <div class="container" *ngIf="carrito">
 <table class="default" *ngIf="carrito != undefined ">
     <tr>
-        <td>
+        
         <td>Nombre</td>
         <td>Cantidad</td>
         <td>Precio unitario</td>
@@ -15,11 +15,14 @@
     </tr>
 
     <tr *ngFor="let producto of carrito" >
-      <td>{{producto.nombre}}<td>
-      <td>{{producto.cantidad}}<td>
-      <td>{{producto.precio}}<td>
+      <td>{{producto.nombre}}</td>
+      <td >
+        <span *ngIf="producto.cantidad>0; else noDisponible">{{ producto.cantidad }}</span>
+        <ng-template #noDisponible>No disponible</ng-template>
+      </td>
+      <td>{{producto.precio}}</td>
       <td>
-        <a ><i class="material-icons" (click)="insertarProducto(producto.idProducto,+1)">add</i></a>
+        <a ><i class="material-icons" (click)="insertarProducto(producto.idProducto)">add</i></a>
         <a ><i class="material-icons" (click)="insertarProducto(producto.idProducto,-1)">remove</i></a>
         <a ><i class="material-icons" (click)="eliminarProducto(producto.idProducto)">delete</i></a>
       </td>
