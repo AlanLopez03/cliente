@@ -20,7 +20,8 @@ children:
   {path:'carrito',redirectTo: 'carrito',pathMatch: 'full'},
   {path:'carrito',component:CarritoComponent,},
   {path:"",component:MostrarProductosComponent,},
-  {path:'usuarioCompras',redirectTo: 'usuarioCompras',pathMatch: 'full'},{path:'usuarioCompras',component:UsuarioComprasComponent,}
+  {path:'usuarioCompras',redirectTo: 'usuarioCompras',pathMatch: 'full'},{path:'usuarioCompras',component:UsuarioComprasComponent,},
+
 ]
 },
 {path:'control',component:ControlComponent,children:

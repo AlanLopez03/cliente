@@ -19,6 +19,7 @@ import { ReportesComponent } from './components/reportes/reportes.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { UsuarioComprasComponent } from './components/usuario-compras/usuario-compras.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,9 @@ import { UsuarioComprasComponent } from './components/usuario-compras/usuario-co
     AdminBarComponent,
     ReportesComponent,
     PedidosComponent,
-    UsuarioComprasComponent
+    UsuarioComprasComponent,
+
+    
   ],
   imports: [
     FormsModule,

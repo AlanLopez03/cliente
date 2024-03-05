@@ -52,12 +52,17 @@
             <td>Subtotal</td>
         </tr>
         <tr *ngFor="let producto of productos,let i=index">
-            <td>{{producto.nombre}}<td>
+            <td>{{producto.nombre}}</td>
             <td>{{pedidos[i].cantidadProducto}}</td>
             <td>${{pedidos[i].subtotal}}</td>
         </tr>
-
+        <tr>
+            <td>Cliente:{{cliente.nombre}}</td>
+        </tr>
       </table>
+  </div>
+  <div>
+
   </div>
   <div class="modal-footer">
     <a  class="modal-close waves-effect waves-green btn-flat" >Aceptar </a>

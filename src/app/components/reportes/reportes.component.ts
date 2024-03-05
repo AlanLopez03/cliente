@@ -41,7 +41,7 @@ ngOnInit(): void {//Ya jala
     );
     $('.modal').modal();
   });
- // Debe mostrar las compras,no los pedidos
+
   this.reportesService.list().subscribe((res:any) => {
     this.ventas = res;
     for (const venta1 of this.ventas)
@@ -65,7 +65,14 @@ buscar(){
   {
   {this.fechas.setDatos(inicio,fin);
   this.reportesService.verVentasPeriodo(this.fechas).subscribe((res:any) => {
-    this.ventas = res;
+    if (res.length>0)
+      this.ventas = res;
+    else
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops... :(',
+        text: 'No se encontraron resultados',
+      })
     
   },
     err => console.log(err)

@@ -30,13 +30,20 @@
     Modificar productos
   </span>
     <table class="default" *ngIf="productos != undefined">
+      <tr>
+        <td>Código</td>
+        <td>Nombre</td>
+        <td>Cantidad</td>
+        <td>Precio</td>
+        <td>Acciones</td>
+      </tr>
       <tr *ngFor="let producto of productos">
-        <td>{{producto.nombre}}<td>
-        <td><a class="modal-trigger" data-target="modal1"  (click)="modificarProducto(producto.idProducto)"><i class="material-icons">edit</i></a>
-        <!--<a class="modal-trigger" data-target="modal2"><i class="material-icons">delete</i></a>--->
-        <a (click)="eliminarProducto(producto.idProducto)"><i class="material-icons">delete</i></a>
-      </td>
-        
+        <td>{{producto.idProducto}}</td>
+        <td>{{producto.nombre}}</td>
+        <td>{{producto.stock}}</td>
+        <td>{{producto.precio}}</td>
+        <td><a class="modal-trigger" data-target="modal1"  (click)="modificarProducto(producto.idProducto)"><i class="material-icons">edit</i></a></td>
+        <td>   <a (click)="eliminarProducto(producto.idProducto)"><i class="material-icons">delete</i></a></td>
       </tr>
     </table>
 </div>
