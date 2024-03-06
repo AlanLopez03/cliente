@@ -151,7 +151,16 @@ constructor(private carritoService: CarritoService, private inventarioService: I
   }
   comprarCarrito(){
     var objeto=new Compra();
-    objeto.set("2024-01-30",1);//Cambiar fecha
+    var fecha = new Date();//Se debe formatear la fecha a yyyy-mm-dd
+    let fechaActual = new Date();
+    // Obtener el año, mes y día
+    let año = fechaActual.getFullYear();
+    let mes = ("0" + (fechaActual.getMonth() + 1)).slice(-2); // Agregar un cero delante si es necesario
+    let dia = ("0" + fechaActual.getDate()).slice(-2); // Agregar un cero delante si es necesario
+    // Formatear la fecha actual en el formato "yyyy-mm-dd"
+    let fechaActualFormateada = `${año}-${mes}-${dia}`;
+    //console.log(fechaActualFormateada); // Salida: "2022-02-06" (por ejemplo)
+    objeto.set(fechaActualFormateada,1);//Cambiar fecha
     this.carritoService.comprar(localStorage.getItem('idUsuario'),objeto).subscribe(
       (res:any) => {
         if (res==false)
