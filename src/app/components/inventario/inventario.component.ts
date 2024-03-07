@@ -182,6 +182,7 @@ export class InventarioComponent  implements OnInit{
       let fecha = i.inicio_descuento;
       
     }
+    
   }
   eliminarProducto(idProducto:any)
   {
