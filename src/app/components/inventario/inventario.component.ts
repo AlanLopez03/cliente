@@ -197,6 +197,8 @@ export class InventarioComponent  implements OnInit{
       cancelButtonText: 'Cancelar'
     }).then((result) => 
     {
+      if (result.isConfirmed)
+        {
         this.inventarioService.eliminar(idProducto).subscribe(
         res =>
 
@@ -227,7 +229,7 @@ export class InventarioComponent  implements OnInit{
         },
 
 
-        );
+        );}
     }
     );
   }
