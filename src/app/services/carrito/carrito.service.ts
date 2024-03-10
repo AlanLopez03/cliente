@@ -19,9 +19,9 @@ export class CarritoService {
   eliminarProducto(id : any) {
     return this.http.delete(`${environment.API_URI}/carrito/eliminarProducto/${id}`);
   }
-  search(nombre : any) {
-    return this.http.get(`${environment.API_URI}/carrito/buscar`,nombre);
-  }
+  //search(nombre : any) {
+  //  return this.http.get(`${environment.API_URI}/carrito/buscar`,nombre);
+  //}
   comprar(id:any,carrito: any) {
     return this.http.post(`${environment.API_URI}/compras/crearCompra/${id}`,carrito);
   }

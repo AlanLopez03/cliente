@@ -1,4 +1,4 @@
-export class Pedidos {
+    export class Pedidos {
     idPedido: number;
     cantidadProducto: number;
     subtotal: number;
