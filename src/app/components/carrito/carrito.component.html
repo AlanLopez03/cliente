@@ -1,6 +1,6 @@
 <ng-container>
   <div *ngIf="carrito.length>0">
-    <h1>Carrito</h1>
+    <h1>Cart</h1>
   </div>
 </ng-container>
 
@@ -8,17 +8,17 @@
 <table class="default" *ngIf="carrito != undefined ">
     <tr>
         
-        <td>Nombre</td>
-        <td>Cantidad</td>
-        <td>Precio unitario</td>
-        <td>Acciones</td>
+        <td>Name</td>
+        <td>Quantity</td>
+        <td>Unit price</td>
+        <td>Actions</td>
     </tr>
 
     <tr *ngFor="let producto of carrito" >
       <td>{{producto.nombre}}</td>
       <td >
         <span *ngIf="producto.cantidad>0; else noDisponible">{{ producto.cantidad }}</span>
-        <ng-template #noDisponible>No disponible</ng-template>
+        <ng-template #noDisponible>Not available</ng-template>
       </td>
       <td>{{producto.precio}}</td>
       <td>
@@ -30,7 +30,7 @@
     </tr>
   </table>
   <div class="container">
-    <a (click)="limpiarCarrito()" class="waves-effect waves-light btn"><i class="material-icons right">delete</i>Limpiar carrito</a>
-    <a (click)="comprarCarrito()" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Comprar </a>
+    <a (click)="limpiarCarrito()" class="waves-effect waves-light btn"><i class="material-icons right">delete</i>Clean cart</a>
+    <a (click)="comprarCarrito()" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Buy </a>
   </div>
 </div>

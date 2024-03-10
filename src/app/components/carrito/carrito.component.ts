@@ -34,14 +34,14 @@ constructor(private carritoService: CarritoService, private inventarioService: I
   eliminarProducto(id:any){
    // console.log(id);
     Swal.fire({
-      title: '¿Está seguro que desea eliminar el producto del carrito?',
-      text: "Esta acción no se puede revertir",
+      title: '¿Are you sure?',
+      text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
-      cancelButtonText:'Cancelar',
-      confirmButtonText: 'Eliminar'
+      cancelButtonText:'Cancel',
+      confirmButtonText: 'Delete'
     }).then((result) => {
       
       if (result.isConfirmed)
@@ -49,8 +49,8 @@ constructor(private carritoService: CarritoService, private inventarioService: I
       this.carritoService.eliminarProducto(id).subscribe(
         (res:any) => {
           Swal.fire(
-            'Producto eliminado',
-            'El producto se ha eliminado con éxito',
+            'Product deleted',
+            'The product has been deleted from the cart',
             'success'
           ).then((result) => {
           this.ngOnInit();})
@@ -83,7 +83,7 @@ constructor(private carritoService: CarritoService, private inventarioService: I
         {
           Swal.fire(
             'Error',
-            'No hay stock suficiente',
+            'There is not enough stock for the purchase',
             'error')
           }
       },
@@ -95,14 +95,14 @@ constructor(private carritoService: CarritoService, private inventarioService: I
   limpiarCarrito(){
     var idUsuario=localStorage.getItem('idUsuario');
     Swal.fire({
-      title: '¿Está seguro que desea limpiar el carrito?',
-      text: "Esta acción no se puede revertir",
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
-      cancelButtonText:'Cancelar',
-      confirmButtonText: 'Limpiar'
+      cancelButtonText:'Cancel',
+      confirmButtonText: 'Clean'
     }).then((result) => {
     if (result.isConfirmed)
     {
@@ -132,8 +132,8 @@ constructor(private carritoService: CarritoService, private inventarioService: I
         
         this.ngOnInit();
         Swal.fire(
-          'Carrito limpiado',
-          'El carrito se ha limpiado con éxito',
+          'Cart cleaned successfully',
+          'Your cart has been cleaned successfully',
           'success'
         )
       },err => console.log(err));
@@ -167,14 +167,14 @@ constructor(private carritoService: CarritoService, private inventarioService: I
         {
           Swal.fire(
             'Error',
-            'No hay suficiente stock',
+            'There is not enough stock for the purchase',
             'error'
           )
         }
         else{
         Swal.fire(
-          'Compra realizada',
-          'La compra se ha realizado con éxito',
+          'Success',
+          'The purchase was successful',
           'success'
         )
         this.ngOnInit();

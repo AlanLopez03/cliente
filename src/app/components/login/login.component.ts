@@ -11,7 +11,7 @@ login = new loginModel();
 constructor(private usuarioService: UsuarioService,private router:Router) { }
 logueo(){
   if (this.login.correo == '' || this.login.password == '') {
-    alert('Debe ingresar todos los datos');
+    alert('You must enter a username and password');
     return;
   }
   this.usuarioService.login(this.login.correo, this.login.password).subscribe(
@@ -28,7 +28,7 @@ logueo(){
           this.router.navigateByUrl('/home');
       } 
       else {
-        alert('Usuario o contraseña incorrectos');
+        alert('Invalid username or password');
       }
     }
   );

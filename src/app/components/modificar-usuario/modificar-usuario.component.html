@@ -1,11 +1,11 @@
 
 <div class="contenedor">
-    <div>Modificar usuarios</div>
+    <div>Modify users</div>
 <table class="default" *ngIf="usuarios != undefined">
     <tr>
-      <th>Nombre</th>
-      <th>Modificar datos</th>
-      <th>Eliminar</th>
+      <th>Name</th>
+      <th>Modify data</th>
+      <th>Delete</th>
     </tr>
     <tr *ngFor="let usuario of usuarios">
       <td>{{usuario.nombre}}</td>
@@ -17,25 +17,25 @@
   
   <div  id="modalModificarusuario" class="modal" >
     <div class="modal-content">
-      <h4>Modificar usuario</h4>
+      <h4>Modify user data</h4>
       <div class="row">
         <div class="input-field col s12">
-          <label class="active">Nombre </label>
+          <label class="active">Name </label>
           <input   [(ngModel)]="usuario.nombre"  type="text" class="validate">
         </div>
         <div class="row">
             <div class="input-field col s12">
-              <label class="active">Correo </label>
+              <label class="active">Email </label>
               <input   [(ngModel)]="usuario.correo"  type="text" class="validate">
         </div>
         <div class="row">
             <div class="input-field col s12">
-              <label class="active">Nombre de usuario </label>
+              <label class="active">Username </label>
               <input   [(ngModel)]="usuario.username"  type="text" class="validate">
         </div>        
         <div class="row">
             <div class="input-field col s12">
-              <label class="active">Contraseña </label>
+              <label class="active">Password </label>
               <input   [(ngModel)]="usuario.password"  type="text" class="validate">
         </div>
             <a class='dropdown-trigger btn' href='#' data-target='dropdown1' *ngIf="roles!=undefined">{{rol.nombreRol}}</a>
@@ -50,9 +50,9 @@
     </div>
   </div>
     <div class="modal-footer">
-        <a class="modal-close btn-flat" (click)="cancelar()">Cancelar</a>
-        <a class="btn red darken-2" (click)="eliminarUsuario(usuario.idUsuario)" >Eliminar</a>
-        <a class="btn" (click)="guardar()" >Modificar</a>
+        <a class="modal-close btn-flat" (click)="cancelar()">Cancel</a>
+        <a class="btn red darken-2" (click)="eliminarUsuario(usuario.idUsuario)" >Delete</a>
+        <a class="btn" (click)="guardar()" >Modify</a>
 
         <!--Agregar el color justo despues del boton-->
     </div>

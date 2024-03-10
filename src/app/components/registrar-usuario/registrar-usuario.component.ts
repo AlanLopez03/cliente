@@ -19,7 +19,7 @@ export class RegistrarUsuarioComponent {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Se ha registrado correctamente',
+          title: 'Your user has been created successfully',
           showConfirmButton: false,
           timer: 1500
         })
@@ -33,7 +33,7 @@ export class RegistrarUsuarioComponent {
     Swal.fire({
       position: 'center',
       icon: 'error',
-      title: 'Faltan datos por completar',
+      title: 'You must fill all the fields',
       showConfirmButton: true,
       timer: 1500
     })

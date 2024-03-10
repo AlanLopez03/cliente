@@ -76,7 +76,7 @@ export class InventarioComponent  implements OnInit{
         Swal.fire({
           position: 'center',
           icon: 'error',
-          title: 'Producto no encontrado',
+          title: 'Product not found',
           showConfirmButton: true,
           timer: 1500
         })
@@ -155,7 +155,7 @@ export class InventarioComponent  implements OnInit{
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Producto actualizado',
+        title: 'Product updated',
         showConfirmButton: true,
         timer: 1500
       }).then((result) =>{
@@ -170,7 +170,7 @@ export class InventarioComponent  implements OnInit{
       Swal.fire({
         position: 'center',
         icon: 'error',
-        title: 'Error al actualizar',
+        title: 'Error trying to update product',
         showConfirmButton: true,
         timer: 1500
       });
@@ -186,20 +186,23 @@ export class InventarioComponent  implements OnInit{
   }
   eliminarProducto(idProducto:any)
   {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: "¡No podrás revertir esto!",
+    Swal.fire(
+      {
+      title: 'Are you sure?',
+      text: "¡You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#ff9800',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminar',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => 
-    {
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel'
+      }).then((result) => 
+
+      {
+        if (result.isConfirmed)
+        {
         this.inventarioService.eliminar(idProducto).subscribe(
         res =>
-
         {
           if (result.isConfirmed)
           {
@@ -207,7 +210,7 @@ export class InventarioComponent  implements OnInit{
             {
               position: 'center',
               icon: 'success',
-              title: 'Producto eliminado',
+              title: 'Deleted',
               showConfirmButton: true,
               timer: 1500
             }
@@ -224,11 +227,8 @@ export class InventarioComponent  implements OnInit{
           }
           );
         }
-        },
-
-
-        );
-    }
+        },);
+    }}
     );
   }
   return(){
@@ -238,12 +238,6 @@ export class InventarioComponent  implements OnInit{
 
   openCrearProducto(){
     this.producto = new Producto();//limpiar el objeto
-    //this.categoria = new Categoria();
-    //this.material = new Material();
-    //this.marca = new Marca();
-    //this.categoria.set(1);
-    //this.material.set(1);
-    //this.marca.set(1);
     $('#crearProducto').modal('open');
   }
   crearProducto(){
@@ -254,7 +248,7 @@ export class InventarioComponent  implements OnInit{
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Producto creado',
+          title: 'Product created',
           showConfirmButton: true,
           
         }).then((result) =>{

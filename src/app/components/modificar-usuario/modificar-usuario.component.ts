@@ -53,7 +53,7 @@ export class ModificarUsuarioComponent implements OnInit {
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Usuario modificado correctamente',
+        title: 'User updated successfully',
         showConfirmButton: false,
         timer: 1500
       })
@@ -74,23 +74,23 @@ export class ModificarUsuarioComponent implements OnInit {
   eliminarUsuario(idUsuario: any){
 
     Swal.fire({
-      title: '¿Está seguro?',
-      text: "No podrá revertir esta acción",
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#4caf50',
       cancelButtonColor: '#f44336',
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar'
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
         this.usuarioService.delete(idUsuario).subscribe((resUsuario: any) => 
         {
-          console.log("Usuario eliminado correctamente")
+
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Usuario eliminado correctamente',
+            title: 'User deleted successfully',
             showConfirmButton: false,
             timer: 1500
           })

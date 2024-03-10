@@ -1,14 +1,14 @@
 <div class="container">
     <div class="row">
       <div class="titulo">
-        <span>Crear una cuenta</span>
+        <span>Create an account</span>
       </div>
         <form class="col s12">
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">account_circle</i>
               <input  id="first_name" type="text" class="validate" [(ngModel)]="usuario.nombre" name="name">
-              <label for="first_name">Nombre</label>
+              <label for="first_name">Name</label>
             </div>
            <!-- 
             <div class="input-field col s6">
@@ -28,7 +28,7 @@
             <div class="input-field col s12">
               <i class="material-icons prefix">perm_identity</i>
               <input id="Nombre de usuario" type="text" class="validate" [(ngModel)]="usuario.username" name="username">
-              <label for="Nombre de Usuario">Nombre de usuario</label>
+              <label for="Nombre de Usuario">Username</label>
             </div>
           </div>
 
@@ -36,10 +36,10 @@
             <div class="input-field col s12">
               <i class="material-icons prefix">vpn_key</i>
               <input id="password" type="password" class="validate" [(ngModel)]="usuario.password" name="password">
-              <label for="password">Contraseña</label>
+              <label for="password">Password</label>
             </div>
           </div>
-          <button class="btn waves-effect waves-light" (click)="registrarUsuario()" type="submit" name="action">Enviar
+          <button class="btn waves-effect waves-light" (click)="registrarUsuario()" type="submit" name="action">Submit
             <i class="material-icons left">send</i>
           </button>
         </form>

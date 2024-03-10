@@ -7,16 +7,16 @@
         <div class="input-field col s6">
           <i class="material-icons prefix">search</i>
           <input id="icon_prefix" type="text" class="active" [(ngModel)]="producto.idProducto" name="busqueda" >
-          <label for="icon_prefix">Buscar por Código</label>
+          <label for="icon_prefix">Search by code</label>
         </div>
       </td>
       <td>
-        <a class="waves-effect waves-light btn" (click)="buscarProducto(producto.idProducto)">Buscar</a>
+        <a class="waves-effect waves-light btn" (click)="buscarProducto(producto.idProducto)">Search</a>
       </td>
     </tr>
     <tr>
       <div class="crearProducto">
-        <a class="waves-effect waves-light btn modal-trigger" data-target="crearProducto" (click)="openCrearProducto()" ><i class="material-icons left">add</i>Nuevo producto</a>
+        <a class="waves-effect waves-light btn modal-trigger" data-target="crearProducto" (click)="openCrearProducto()" ><i class="material-icons left">add</i>New product</a>
       </div>
     </tr>
   </table>
@@ -27,15 +27,15 @@
 
 <div class="contenedor">    
   <span class="titulo">
-    Modificar productos
+    modify products
   </span>
     <table class="default" *ngIf="productos != undefined">
       <tr>
-        <td>Código</td>
-        <td>Nombre</td>
-        <td>Cantidad</td>
-        <td>Precio</td>
-        <td>Acciones</td>
+        <td>Barcode</td>
+        <td>Name</td>
+        <td>Stock</td>
+        <td>Price</td>
+        <td>Actions</td>
       </tr>
       <tr *ngFor="let producto of productos">
         <td>{{producto.idProducto}}</td>
@@ -54,13 +54,13 @@
   <div class="row">
     <form class="col s12">
       <div class="titulo">
-        <span>Modificar datos del producto</span>
+        <span>Modify product data</span>
       </div>
       <div class="row">
         <div class="input-field col s6">
             <i class="material-icons prefix">info</i>
             <input id="code" type="text" class="validate" [(ngModel)]="producto.idProducto" name="idProducto">
-            <label for="code" class="active">Código de barras</label>
+            <label for="code" class="active">Barcode</label>
         </div>
         
     </div>
@@ -68,20 +68,20 @@
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
           <input  id="name" type="text" class="validate" placeholder="producto.nombre" [(ngModel)]="producto.nombre" name="Nombre">
-          <label for="name" class="active"> Nombre del producto</label>
+          <label for="name" class="active"> Product name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
           <input  id="name" type="text" class="validate"  [(ngModel)]="producto.precio" name="Precio">
-          <label for="name" class="active"> Precio</label>
+          <label for="name" class="active"> Price</label>
         </div>
 
         <div class="input-field col s6">
 
           <input  id="name" type="text" class="validate" [(ngModel)]="producto.stock" name="Cantidad">
-          <label for="name" class="active"> Cantidad</label>
+          <label for="name" class="active"> Quantity</label>
         </div>
       </div>
 
@@ -89,13 +89,13 @@
         <div class="input-field col s6">
           <i class="material-icons prefix">percent</i>
           <input  id="name" type="text" class="validate" [(ngModel)]="producto.descuento" name="descuento">
-          <label for="name" class="active"> Descuento</label>
+          <label for="name" class="active"> Discount</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
-          <label for="name" class="active" > Inicio descuento</label>
+          <label for="name" class="active" > Discount start</label>
           <input type="text" class="datepicker" id="inicio_descuento" [(ngModel)]="producto.inicio_descuento" name="inicio_descuento">
           
           <!--<input [(ngModel)]="producto.inicio_descuento" type="text" id="fechaIni" #fechaI
@@ -104,7 +104,7 @@
 
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
-          <label for="name" class="active"> Fin descuento</label>
+          <label for="name" class="active"> Discount end</label>
           <input type="text" class="datepicker" id="fin_descuento"  [(ngModel)]="producto.fin_descuento" name="fin_descuento" >
         </div>
       </div>
@@ -135,8 +135,8 @@
   </div>
   </div>   
   <div class="modal-footer">
-    <a  class="modal-close waves-effect waves-green btn-flat" (click)="guardarProducto()">Guardar Datos</a>
-    <a  class="modal-close waves-effect waves-green btn-flat" >Cancelar </a>
+    <a  class="modal-close waves-effect waves-green btn-flat" (click)="guardarProducto()">Save data</a>
+    <a  class="modal-close waves-effect waves-green btn-flat" >Cancel </a>
   </div>     
 </div>
 
@@ -146,13 +146,13 @@
   <div class="row">
     <form class="col s12">
       <div class="titulo">
-        <span>Agregar un producto</span>
+        <span>Add a new product</span>
       </div>
       <div class="row">
         <div class="input-field col s6">
             <i class="material-icons prefix">info</i>
             <input id="code" type="text" class="validate" [(ngModel)]="producto.idProducto" name="idProducto">
-            <label for="code" class="active">Código de barras</label>
+            <label for="code" class="active">barcode</label>
         </div>
         
     </div>
@@ -160,20 +160,20 @@
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
           <input  id="name" type="text" class="validate" placeholder="producto.nombre" [(ngModel)]="producto.nombre" name="Nombre">
-          <label for="name" class="active"> Nombre del producto</label>
+          <label for="name" class="active"> Product name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
           <input  id="name" type="text" class="validate"  [(ngModel)]="producto.precio" name="Precio">
-          <label for="name" class="active"> Precio</label>
+          <label for="name" class="active"> price</label>
         </div>
 
         <div class="input-field col s6">
 
           <input  id="name" type="text" class="validate" [(ngModel)]="producto.stock" name="Cantidad">
-          <label for="name" class="active"> Cantidad</label>
+          <label for="name" class="active"> Quantity</label>
         </div>
       </div>
 
@@ -181,20 +181,20 @@
         <div class="input-field col s6">
           <i class="material-icons prefix">percent</i>
           <input  id="name" type="text" class="validate" [(ngModel)]="producto.descuento" name="descuento">
-          <label for="name" class="active"> Descuento</label>
+          <label for="name" class="active"> Discount</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
 
-          <label for="name" class="active"> Inicio descuento</label>
+          <label for="name" class="active">  Discount start</label>
           <input type="date" class="datepicker" id="inicio_descuento" [(ngModel)]="producto.inicio_descuento" name="inicio_descuento" >
         </div>
 
         <div class="input-field col s6">
           <i class="material-icons prefix">info</i>
-          <label for="name" class="active"> Fin descuento</label>
+          <label for="name" class="active">  Discount end</label>
           <input type="date" class="datepicker" id="fin_descuento"  [(ngModel)]="producto.fin_descuento" name="fin_descuento" >
         </div>
       </div>
@@ -227,8 +227,8 @@
   </div>
   </div>   
   <div class="modal-footer">
-    <a  class="modal-close waves-effect waves-green btn-flat" (click)="crearProducto()">Guardar Datos</a>
-    <a  class="modal-close waves-effect waves-green btn-flat" >Cancelar </a>
+    <a  class="modal-close waves-effect waves-green btn-flat" (click)="crearProducto()">Save data</a>
+    <a  class="modal-close waves-effect waves-green btn-flat" >Cancel </a>
   </div>     
 </div>
       

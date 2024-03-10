@@ -30,8 +30,7 @@ export class NavigationComponent implements OnInit{
     );
   }
   logOut(){//Funciona para cerrar sesion pero no se como hacer para que se cierre la sesion en el servidor
-    console.log('salir');
-    console.log(localStorage.getItem('idUsuario'));
+
     localStorage.removeItem('idUsuario');
     this.router.navigateByUrl('/');
 

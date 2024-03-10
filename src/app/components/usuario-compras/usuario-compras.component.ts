@@ -17,7 +17,8 @@ export class UsuarioComprasComponent implements OnInit{
     console.log(id);
     this.reportesService.verComprasUsuario(id).subscribe((res:any) => 
     {
-      if (res.length > 0) 
+      console.log(res);
+      if (res.length > 0 && res!=false) 
       {
         this.compras = res;//Ya tenemos todas las compras realizadas por el usuario
         
@@ -26,7 +27,7 @@ export class UsuarioComprasComponent implements OnInit{
       Swal.fire({
         icon: 'error',
         title: '?...',
-        text: 'No se han encontrado compras',
+        text: 'You have not made any purchases yet',
       });
     });
   }

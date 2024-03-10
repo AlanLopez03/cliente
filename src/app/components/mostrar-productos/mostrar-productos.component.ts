@@ -46,8 +46,8 @@ constructor(private inventarioService: InventarioService,private carritoService:
           this.carritoService.insertar(this.inserta).subscribe((res:any) => 
           {
             Swal.fire(
-              'Producto agregado',
-              'El producto se ha agregado con éxito',
+              'Product added',
+              'The product has been added to the cart',
               'success')
           },
           err => console.log(err));
@@ -56,7 +56,7 @@ constructor(private inventarioService: InventarioService,private carritoService:
         {
           Swal.fire(
             'Error',
-            'No hay stock suficiente',
+            'There is not enought stock of this product',
             'error')
           }
       },

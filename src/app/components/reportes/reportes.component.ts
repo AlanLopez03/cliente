@@ -54,7 +54,6 @@ ngOnInit(): void {//Ya jala
       );
     }
   });
-  //console.log(this.ventas);
 
 }
 buscar(){
@@ -71,7 +70,7 @@ buscar(){
       Swal.fire({
         icon: 'error',
         title: 'Oops... :(',
-        text: 'No se encontraron resultados',
+        text: 'We could not find any sales in the selected range of dates',
       })
     
   },
@@ -83,7 +82,7 @@ else
   Swal.fire({
     icon: 'error',
     title: 'Oops... :(',
-    text: 'Debes establecer un rango de fechas',
+    text: 'You must select a range of dates to search',
   })
 }
 }
@@ -106,8 +105,7 @@ verDetalles(id:number,idCliente:number)//Recibe el id de la compra y lo busca en
     }
     this.usuarioService.listone(idCliente).subscribe((res:any) =>{
       this.cliente=res;//Obtiene los datos del cliente
-      console.log("Cliente",this.cliente.nombre); 
-      console.log("productos",this.productos);  
+
     },
     error => console.log(error)
     )

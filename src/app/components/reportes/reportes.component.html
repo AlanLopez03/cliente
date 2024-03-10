@@ -1,28 +1,28 @@
 <div class="contenedor">
-    <h1>Reporte de ventas</h1>
+    <h1>Sales report</h1>
 </div>
 <div class="container">
     <div class="calendario">
-        <span clas>Fecha de inicio</span>
+        <span clas>Start date</span>
         <input type="text" class="datepicker" id="inicio">
     </div>
     <div class="calendario">
-        <span>Fecha de fin</span>
+        <span>End date</span>
         <input type="text" class="datepicker" id="fin">
     </div>
 
     <div class="calendario">
         <div class="boton">
-            <a  class="waves-effect waves-light btn" (click)="buscar()"><i class="material-icons left">search</i>Buscar</a>
+            <a  class="waves-effect waves-light btn" (click)="buscar()"><i class="material-icons left">search</i>Search</a>
     </div>
 </div>
 <div class="container">
 <table class="default" *ngIf="ventas != undefined && estados!=undefined">
     <tr>
-        <th>ID Compra</th>
-        <th>Fecha de compra</th>
+        <th>Id</th>
+        <th>Purchase date</th>
         <th>Total</th>
-        <th>Estado</th>
+        <th>State</th>
 
     </tr>
     <tr *ngFor="let venta of ventas;let i=index">
@@ -33,7 +33,7 @@
 
         <td><a >{{estados[i].nombre}}</a></td>
         <th>
-            <a class="waves-effect waves-light btn" (click)="verDetalles(venta.idCompra,venta.idCliente)">Detalles</a>
+            <a class="waves-effect waves-light btn" (click)="verDetalles(venta.idCompra,venta.idCliente)">See details</a>
         </th>
         </ng-container>
     </tr>
@@ -44,11 +44,11 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
   <div class="modal-content">
-    <h4>Datos de la compra</h4>
+    <h4>Purchase details</h4>
     <table class="default" *ngIf="productos != undefined && pedidos!=undefined">
         <tr>
-            <td>Nombre </td>
-            <td>Cantidad </td>
+            <td>Name </td>
+            <td>Quantity </td>
             <td>Subtotal</td>
         </tr>
         <tr *ngFor="let producto of productos,let i=index">
@@ -57,7 +57,7 @@
             <td>${{pedidos[i].subtotal}}</td>
         </tr>
         <tr>
-            <td>Cliente:{{cliente.nombre}}</td>
+            <td>Customer:{{cliente.nombre}}</td>
         </tr>
       </table>
   </div>
@@ -65,6 +65,6 @@
 
   </div>
   <div class="modal-footer">
-    <a  class="modal-close waves-effect waves-green btn-flat" >Aceptar </a>
+    <a  class="modal-close waves-effect waves-green btn-flat" >Ok </a>
   </div>
 </div>
