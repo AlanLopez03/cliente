@@ -34,6 +34,7 @@ export class InventarioComponent  implements OnInit{
   constructor(private inventarioService:InventarioService ,private categoriaService:CategoriaService,private materialService:MaterialService,private marcaService:MarcaService,private router:Router ) { }
   ngOnInit(): void 
   {
+    this.producto = new Producto();
     $(document).ready(function(){
       $('.dropdown-trigger').dropdown();
       $('.modal').modal();  
@@ -66,22 +67,57 @@ export class InventarioComponent  implements OnInit{
     }, err => console.log(err));
 
   }
-  buscarProducto(id:any){
-    this.inventarioService.listone(id).subscribe((resProducto:any) => {
-      if (resProducto ) {
-      this.producto = resProducto;
-      this.openModificarProducto();
+  //buscarProducto(id:any){
+  //  console.log(id);
+  //  this.inventarioService.listone(id).subscribe((resProducto:any) => {
+  //    if (resProducto ) {
+  //    this.producto = resProducto;
+  //    this.openModificarProducto();
+  //  }
+  //    else{
+  //      Swal.fire({
+  //        position: 'center',
+  //        icon: 'error',
+  //        title: 'Producto no encontrado',
+  //        showConfirmButton: true,
+  //        timer: 1500
+  //      })
+  //    }
+  //  }, err => console.log(err));
+  //}
+  buscarProducto(name:any){
+    if(name!='' && name!=null)
+    {
+      let data = {
+        nombre: name
+      }
+      this.inventarioService.buscarProducto(data).subscribe((res:any) => {
+        console.log(res);
+        if (res.length>0) {
+          this.productos = res;
+        }
+        else{
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Producto no encontrado',
+            showConfirmButton: true,
+            timer: 1500
+          })
+        }
+      }, err => console.log(err));
     }
-      else{
-        Swal.fire({
+    else{
+      Swal.fire(
+        {
           position: 'center',
           icon: 'error',
-          title: 'Producto no encontrado',
+          title: 'Debes escribir un nombre',
           showConfirmButton: true,
           timer: 1500
+        
         })
-      }
-    }, err => console.log(err));
+    }
   }
 
   listone()

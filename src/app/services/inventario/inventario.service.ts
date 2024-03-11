@@ -23,7 +23,7 @@ export class InventarioService {
     return this.http.post(`${environment.API_URI}/productos/crearProducto`, producto);
   }
   buscarProducto(nombre : any) {
-    return this.http.get(`${environment.API_URI}/productos/buscarNombre/`,nombre);
+    return this.http.post(`${environment.API_URI}/productos/buscarNombre`,nombre);
   }
   filtrarProductos(id : any) {
     return this.http.get(`${environment.API_URI}/productos/filtrarProductos/${id}`);
