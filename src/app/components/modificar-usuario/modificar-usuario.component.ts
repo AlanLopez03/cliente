@@ -18,6 +18,8 @@ export class ModificarUsuarioComponent implements OnInit {
   usuario: getUsuario = new getUsuario();
   rol: Rol = new Rol();
   roles: Rol[] = [];
+  pageSize = 5;
+  p = 1;
   ngOnInit(): void {
     // Inicializa los modales en ngOnInit
     $(document).ready(function(){

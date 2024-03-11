@@ -24,28 +24,36 @@
 
 
 
-
-<div class="contenedor">    
-  <span class="titulo">
-    Modificar productos
-  </span>
-    <table class="default" *ngIf="productos != undefined">
-      <tr>
-        <td>Código</td>
-        <td>Nombre</td>
-        <td>Cantidad</td>
-        <td>Precio</td>
-        <td>Acciones</td>
-      </tr>
-      <tr *ngFor="let producto of productos">
-        <td>{{producto.idProducto}}</td>
-        <td>{{producto.nombre}}</td>
-        <td>{{producto.stock}}</td>
-        <td>{{producto.precio}}</td>
-        <td><a class="modal-trigger" data-target="modal1"  (click)="modificarProducto(producto.idProducto)"><i class="material-icons">edit</i></a></td>
-        <td>   <a (click)="eliminarProducto(producto.idProducto)"><i class="material-icons">delete</i></a></td>
-      </tr>
-    </table>
+<div class="contenedor">
+  <span class="titulo">Modificar productos</span>
+  <table class="default" *ngIf="productos != undefined">
+    <tr>
+      <td>Código</td>
+      <td>Nombre</td>
+      <td>Cantidad</td>
+      <td>Precio</td>
+      <td>Acciones</td>
+    </tr>
+    <tr *ngFor="let producto of productos | paginate: { itemsPerPage: pageSize, currentPage: p }; let i=index">
+      <td>{{ producto.idProducto }}</td>
+      <td>{{ producto.nombre }}</td>
+      <td>{{ producto.stock }}</td>
+      <td>{{ producto.precio }}</td>
+      <td>
+        <a class="modal-trigger" data-target="modal1" (click)="modificarProducto(producto.idProducto)">
+          <i class="material-icons">edit</i>
+        </a>
+      </td>
+      <td>
+        <a (click)="eliminarProducto(producto.idProducto)">
+          <i class="material-icons">delete</i>
+        </a>
+      </td>
+    </tr>
+  </table>
+  <div class="row center-align">
+    <pagination-controls class="my-pagination" (pageChange)="p = ($event)" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+  </div>
 </div>
 
 

@@ -30,7 +30,8 @@ export class InventarioComponent  implements OnInit{
   producto = new Producto();
   productos:Producto[]= []; 
   fecha = String;
-
+  pageSize = 5;
+  p = 1;
   constructor(private inventarioService:InventarioService ,private categoriaService:CategoriaService,private materialService:MaterialService,private marcaService:MarcaService,private router:Router ) { }
   ngOnInit(): void 
   {

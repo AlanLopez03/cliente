@@ -18,6 +18,7 @@ import { AdminBarComponent } from './components/admin-bar/admin-bar.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { UsuarioComprasComponent } from './components/usuario-compras/usuario-compras.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { UsuarioComprasComponent } from './components/usuario-compras/usuario-co
     FormsModule,
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

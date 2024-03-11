@@ -30,7 +30,8 @@ export class ReportesComponent implements OnInit
   cliente:Usuario=new Usuario();
   clientes:Usuario[]=[];
   pedidos:Pedidos[]=[];
-
+  pageSize = 5;
+  p = 1;
 
 constructor(private router: Router,private reportesService:ReportesService, private usuarioService: UsuarioService,private pedidosService:PedidosService,private inventarioService:InventarioService) { }
 

@@ -1,36 +1,37 @@
-<ng-container>
-  <div *ngIf="carrito.length>0">
+<ng-container *ngIf="carrito.length > 0">
+  <div>
     <h1>Carrito</h1>
   </div>
 </ng-container>
 
 <div class="container" *ngIf="carrito">
-<table class="default" *ngIf="carrito != undefined ">
+  <table class="default" *ngIf="carrito != undefined">
     <tr>
-        
-        <td>Nombre</td>
-        <td>Cantidad</td>
-        <td>Precio unitario</td>
-        <td>Acciones</td>
+      <td>Nombre</td>
+      <td>Cantidad</td>
+      <td>Precio unitario</td>
+      <td>Acciones</td>
     </tr>
 
-    <tr *ngFor="let producto of carrito" >
-      <td>{{producto.nombre}}</td>
-      <td >
-        <span *ngIf="producto.cantidad>0; else noDisponible">{{ producto.cantidad }}</span>
+    <tr *ngFor="let producto of carrito | paginate: { itemsPerPage: pageSize, currentPage: p }; let i = index">
+      <td>{{ producto.nombre }}</td>
+      <td>
+        <span *ngIf="producto.cantidad > 0; else noDisponible">{{ producto.cantidad }}</span>
         <ng-template #noDisponible>No disponible</ng-template>
       </td>
-      <td>{{producto.precio}}</td>
+      <td>{{ producto.precio }}</td>
       <td>
-        <a ><i class="material-icons" (click)="insertarProducto(producto.idProducto)">add</i></a>
-        <a ><i class="material-icons" (click)="insertarProducto(producto.idProducto,-1)">remove</i></a>
-        <a ><i class="material-icons" (click)="eliminarProducto(producto.idProducto)">delete</i></a>
+        <a><i class="material-icons" (click)="insertarProducto(producto.idProducto)">add</i></a>
+        <a><i class="material-icons" (click)="insertarProducto(producto.idProducto, -1)">remove</i></a>
+        <a><i class="material-icons" (click)="eliminarProducto(producto.idProducto)">delete</i></a>
       </td>
-     
     </tr>
   </table>
+  <div class="row center-align">
+    <pagination-controls class="my-pagination" (pageChange)="p = ($event)" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+  </div>
   <div class="container">
     <a (click)="limpiarCarrito()" class="waves-effect waves-light btn"><i class="material-icons right">delete</i>Limpiar carrito</a>
-    <a (click)="comprarCarrito()" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Comprar </a>
+    <a (click)="comprarCarrito()" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Comprar</a>
   </div>
 </div>

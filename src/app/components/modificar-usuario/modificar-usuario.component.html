@@ -1,20 +1,31 @@
-
 <div class="contenedor">
-    <div>Modificar usuarios</div>
-<table class="default" *ngIf="usuarios != undefined">
-    <tr>
-      <th>Nombre</th>
-      <th>Modificar datos</th>
-      <th>Eliminar</th>
-    </tr>
-    <tr *ngFor="let usuario of usuarios">
-      <td>{{usuario.nombre}}</td>
-      <td><a class="modal-trigger" data-target="modalModificarusuario"  (click)="modificarUsuario(usuario.idUsuario)"><i class="material-icons">edit</i></a></td>
-      <td><a ><i class="material-icons" (click)="eliminarUsuario(usuario.idUsuario)">delete</i></a></td>
-    </tr>
-  
+  <div>Modificar usuarios</div>
+  <table class="default" *ngIf="usuarios != undefined">
+      <tr>
+          <th>Nombre</th>
+          <th>Modificar datos</th>
+          <th>Eliminar</th>
+      </tr>
+      <tr *ngFor="let usuario of usuarios | paginate: { itemsPerPage: pageSize, currentPage: p }; let i=index">
+          <td>{{ usuario.nombre }}</td>
+          <td>
+              <a class="modal-trigger" data-target="modalModificarusuario" (click)="modificarUsuario(usuario.idUsuario)">
+                  <i class="material-icons">edit</i>
+              </a>
+          </td>
+          <td>
+              <a (click)="eliminarUsuario(usuario.idUsuario)">
+                  <i class="material-icons">delete</i>
+              </a>
+          </td>
+      </tr>
   </table>
-  
+  <div class="row center-align">
+      <pagination-controls class="my-pagination" (pageChange)="p = ($event)" previousLabel="Anterior" nextLabel="Siguiente">
+      </pagination-controls>
+  </div>
+</div>
+
   <div  id="modalModificarusuario" class="modal" >
     <div class="modal-content">
       <h4>Modificar usuario</h4>

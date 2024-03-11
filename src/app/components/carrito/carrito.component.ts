@@ -19,6 +19,8 @@ export class CarritoComponent implements OnInit{
   producto=new Producto();
   carrito1:Carrito = new Carrito();
   carrito:Carrito[]=[];
+  pageSize = 5;
+  p = 1;
 constructor(private carritoService: CarritoService, private inventarioService: InventarioService, private router: Router) { }
   inserta=new addProducto();
   ngOnInit(): void {
