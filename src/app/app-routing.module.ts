@@ -11,6 +11,8 @@ import { MostrarProductosComponent } from './components/mostrar-productos/mostra
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { UsuarioComprasComponent } from './components/usuario-compras/usuario-compras.component';
+import { RecuperarPasswordComponent } from './components/recuperar-password/recuperar-password.component';
+import { NewPasswordComponent } from './components/new-password/new-password.component';
 const routes: Routes = [
 {path:"",redirectTo: "login",pathMatch: "full"},{path:'login',component: LoginComponent,},
 
@@ -33,6 +35,8 @@ children:
 ]
 },
 {path:'nuevoUsuario',component:RegistrarUsuarioComponent,},
+{path:'recuperarPassword',component:RecuperarPasswordComponent,},
+{path:'restablecerPassword',component:NewPasswordComponent,},
 
 //{path:'control',redirectTo: 'control',pathMatch: 'full'},{path:'control',component:ControlComponent,},
 
