@@ -19,6 +19,9 @@ import { ReportesComponent } from './components/reportes/reportes.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { UsuarioComprasComponent } from './components/usuario-compras/usuario-compras.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RecuperarPasswordComponent } from './components/recuperar-password/recuperar-password.component';
+import { NewPasswordComponent } from './components/new-password/new-password.component';
+
 
 
 @NgModule({
@@ -38,8 +41,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReportesComponent,
     PedidosComponent,
     UsuarioComprasComponent,
-
-    
+    RecuperarPasswordComponent,
+    NewPasswordComponent
   ],
   imports: [
     FormsModule,

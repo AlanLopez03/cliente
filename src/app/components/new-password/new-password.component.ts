@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Router } from '@angular/router';
-import { Usuario } from '../../models/Usuario';
+import { UsuarioPassword } from '../../models/Usuario';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2'
 })
 export class NewPasswordComponent {
 
-  usuario: Usuario = new Usuario();
+  usuario: UsuarioPassword = new UsuarioPassword();
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   enviarPassword() {

@@ -15,3 +15,11 @@ export class Usuario {
         this.idRol = 2;
     }
 }
+export class UsuarioPassword {
+    password: string;
+    password1: string;
+    constructor() {
+        this.password = '';
+        this.password1 = '';
+    }
+}
