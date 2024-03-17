@@ -40,11 +40,17 @@ export class UsuarioService {
   getDomicilio(idUsuario: any){
     return this.http.get(`${environment.API_URI}/domicilios/${idUsuario}`);
   }
+  getDireccion(idDomicilio: any){
+    return this.http.get(`${environment.API_URI}/domicilios/direccion/${idDomicilio}`);
+  }
   crearDomicilio(domicilio: any){
     return this.http.post(`${environment.API_URI}/domicilios/crearDomicilio/`, domicilio);
   }
   actualizarDomicilio(domicilio: any){
     return this.http.put(`${environment.API_URI}/domicilios/actualizar/${domicilio.idDomicilio}`, domicilio);
+  }
+  eliminaDireccion(idDom: any){
+    return this.http.delete(`${environment.API_URI}/domicilios/eliminar/${idDom}`);
   }
 
 }
