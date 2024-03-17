@@ -13,6 +13,7 @@ import { ReportesComponent } from './components/reportes/reportes.component';
 import { UsuarioComprasComponent } from './components/usuario-compras/usuario-compras.component';
 import { RecuperarPasswordComponent } from './components/recuperar-password/recuperar-password.component';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 const routes: Routes = [
 {path:"",redirectTo: "login",pathMatch: "full"},{path:'login',component: LoginComponent,},
 
@@ -23,6 +24,7 @@ children:
   {path:'carrito',component:CarritoComponent,},
   {path:"",component:MostrarProductosComponent,},
   {path:'usuarioCompras',redirectTo: 'usuarioCompras',pathMatch: 'full'},{path:'usuarioCompras',component:UsuarioComprasComponent,},
+  {path:'perfil',component:PerfilComponent}
 
 ]
 },

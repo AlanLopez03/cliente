@@ -21,6 +21,7 @@ import { UsuarioComprasComponent } from './components/usuario-compras/usuario-co
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RecuperarPasswordComponent } from './components/recuperar-password/recuperar-password.component';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 
 
@@ -42,7 +43,8 @@ import { NewPasswordComponent } from './components/new-password/new-password.com
     PedidosComponent,
     UsuarioComprasComponent,
     RecuperarPasswordComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    PerfilComponent
   ],
   imports: [
     FormsModule,
