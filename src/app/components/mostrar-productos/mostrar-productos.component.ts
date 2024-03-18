@@ -30,8 +30,28 @@ constructor(private inventarioService: InventarioService,private carritoService:
       },
       err => console.log(err)
     );
+    this.inventarioService.flagObservable$.subscribe((res:any) => {
+      this.listarOfertas();
+    })
     
+
   }
+  listarOfertas(){
+    this.inventarioService.obtenerOfertas().subscribe(
+      (res:any) => {
+        if (res.length>0)
+          this.productos = res;
+        else
+        Swal.fire(
+          'Error',
+          'No hay ofertas disponibles',
+          'error')
+      
+      },
+      err => console.log(err)
+    );
+  }
+
   agregarProducto(id:any){//Recibe el id del producto
     var a=localStorage.getItem('idUsuario')??'1';
     var stock=0;
