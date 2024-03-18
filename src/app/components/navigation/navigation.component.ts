@@ -17,12 +17,22 @@ declare var $:any;
 })
 export class NavigationComponent implements OnInit{
   categorias: Categoria []= [];
-  constructor(private router:Router,private categoriaService:CategoriaService,private location: Location) { }
+
+constructor(private router:Router,private categoriaService:CategoriaService,private inventarioService:InventarioService,private location: Location) { }
+
   ngOnInit(): void {
     $(document).ready(function(){
       $('.sidenav').sidenav();
       $(".dropdown-trigger").dropdown();
     });
+
+    this.categoriaService.list().subscribe(
+      (res:any) => {
+        this.categorias = res;
+      },
+      err => console.log(err)
+    );
+
   }
   logOut(){//Funciona para cerrar sesion pero no se como hacer para que se cierre la sesion en el servidor
     console.log('salir');
@@ -31,6 +41,7 @@ export class NavigationComponent implements OnInit{
     this.router.navigateByUrl('/');
 
   }
+
   Anillos(){
     localStorage.setItem('Categoria', "1");
     this.reloadPage()
@@ -64,7 +75,12 @@ export class NavigationComponent implements OnInit{
     const currentUrl = this.location.path();
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
         this.router.navigate([currentUrl]);
-    });
+    });}
+
+  MostrarOfertas(id:any)
+  {
+    this.inventarioService.verOfertas(id);
+
   }
   //buscarCategoria(id:any){
   //  this.mostrarProductosComponent.filtrarProductos(id);
