@@ -24,12 +24,20 @@ constructor(private inventarioService: InventarioService,private carritoService:
 }
       );
     });
-    this.inventarioService.list().subscribe(
-      (res:any) => {
-        this.productos = res;
-      },
-      err => console.log(err)
-    );
+    if(localStorage.getItem("Categoria")==null || localStorage.getItem("Categoria")=='0' ){
+        this.inventarioService.list().subscribe(
+          (res:any) => {
+            this.productos = res;
+          },
+          err => console.log(err)
+      );
+    }else{
+      this.inventarioService.buscarporCategoria(localStorage.getItem("Categoria")).subscribe((res:any)=>{
+        this.productos= res
+      },err => console.log(err)
+      );
+      localStorage.removeItem("Categoria")
+    } 
     
   }
   agregarProducto(id:any){//Recibe el id del producto
