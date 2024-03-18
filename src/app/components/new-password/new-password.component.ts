@@ -16,5 +16,9 @@ export class NewPasswordComponent {
 
   enviarPassword() {
   
+      if (this.usuario.password == this.usuario.password1)
+        alert('Contraseña restablecida');
+      else
+        alert('Contraseña incorrecta');
   }
 }
